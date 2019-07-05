@@ -9,9 +9,27 @@ public class Analytics {
     static int MISMATCH_OR_INDEL = -1;      //Score given to the alignment matrix when the gene name mismatches
                                             //Score given to the alignment matrix when the gene name is the same from that movement
 
+    static String holder = "";
+
 
     public static int getHighestScore(int... a){
-        Arrays.sort(a); 
+        int[] holder_array = a.clone();
+        Arrays.sort(a);
+        for(int i = 0; i < holder_array.length; i++){
+            if(holder_array[i] == a[a.length-1]) {
+                switch (i) {
+                    case 0:
+                        holder += "\\";
+                        break;
+                    case 1:
+                        holder += "^";
+                        break;
+                    case 2:
+                        holder += "_";
+                        break;
+                }
+            }
+        }
         return a[a.length-1];
     }
 
@@ -36,7 +54,7 @@ public class Analytics {
         int[][] alignment_Matrix = new int[rows][columns];
 
         //Initializes the Pointer Matrix
-        char[][] pointer_Matrix = new char[rows][columns];
+        String[][] pointer_Matrix = new String[rows][columns];
 
         for(int i = 0; i < columns; i++)
             alignment_Matrix[i][0] = -i;
@@ -50,6 +68,8 @@ public class Analytics {
                 System.out.println("Above: " + alignment_Matrix[y-1][x]);
                 System.out.println("Left: " + alignment_Matrix[y][x-1]);
                 alignment_Matrix[y][x] = score_Algorithm(alignment_Matrix[y-1][x-1], alignment_Matrix[y-1][x], alignment_Matrix[y][x-1], g1, g2, x, y);
+                pointer_Matrix[y][x] = holder;
+                holder = "";
             }
 
         }
@@ -57,6 +77,13 @@ public class Analytics {
         for(int y = 0; y < rows; y++){
             for(int x = 0; x < columns; x++) {
                 System.out.print(alignment_Matrix[y][x]);
+            }
+            System.out.println();
+        }
+
+        for(int y = 1; y < rows; y++){
+            for(int x = 1; x < columns; x++) {
+                System.out.print(pointer_Matrix[y][x]);
             }
             System.out.println();
         }
