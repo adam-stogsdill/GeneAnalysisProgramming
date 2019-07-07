@@ -1,6 +1,9 @@
 package bin.main;
 
 
+import bin.main.ErrorManagement.GENEERROR;
+import bin.main.ErrorManagement.GeneCreationError;
+
 import java.util.Random;
 
 /*
@@ -11,15 +14,14 @@ Thymine(T)
  */
 public class GeneCreation {
 
-    public boolean check_if_Possible(char[] sequence){
+    public static void check_if_Possible(char[] sequence) throws GeneCreationError {
         for(int i = 0; i < sequence.length; i++){
             if (sequence[i] != 'A' && sequence[i] != 'G' && sequence[i] != 'C' && sequence[i] != 'T') {
                 System.out.println("This sequence is invalid at index " + i);
                 System.out.println(sequence[i] + " is not a valid character");
-                return false;
+                throw new GeneCreationError(GENEERROR.INVALID_CHARACTER);
             }
         }
-        return true;
     }
 
     public static String randomGene(int size) {

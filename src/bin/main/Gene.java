@@ -1,6 +1,8 @@
 package bin.main;
 
 
+import bin.main.ErrorManagement.GeneCreationError;
+
 /*
 Adenine(A)
 Guanine(G)
@@ -19,6 +21,12 @@ public class Gene {
      * @param sequence This is simply a sequence that you already have to feed into the information
      */
     public Gene(String sequence){
+        try {
+            GeneCreation.check_if_Possible(sequence.toCharArray());
+        } catch (GeneCreationError e) {
+            e.printStackTrace();
+            return;
+        }
         this.gene_information = sequence.toCharArray();
     }
 
@@ -27,7 +35,11 @@ public class Gene {
 
     @Override
     public String toString(){
-        return this.gene_information.toString();
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i < this.gene_information.length; i++) {
+            str.append(this.gene_information[i]);
+        }
+        return str.toString();
     }
 
     public char[] getGene_information() {
