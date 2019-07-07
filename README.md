@@ -10,4 +10,4 @@ This algorithm is used primarily for gene sequencing looking for the optimal mat
 https://en.wikipedia.org/wiki/Needleman%E2%80%93Wunsch_algorithm
 
 ### Cytogenic Location
-This program will implement the Cytogenic Location which is a technique for finding where specific genes will be located by giving the chromosome, arm, region and band. 7q31.2, for example, would be the CFTR gene located on the 7th chromosome's long arm, in the 3rd region on the 1st band, and the 2nd sub-band.
+This program will implement the Cytogenic Location organization technique which is a technique for finding where specific genes will be located by giving the chromosome, arm, region and band. 7q31.2, for example, would be the CFTR gene located on the 7th chromosome's long arm, in the 3rd region on the 1st band, and the 2nd sub-band.
