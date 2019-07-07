@@ -22,7 +22,7 @@ public class GeneCreation {
         return true;
     }
 
-    public char[] random_Gene(int size){
+    public static String randomGene(int size) {
         Random random = new Random();
         char[] result = new char[size];
         for(int i = 0; i < size; i++){
@@ -36,6 +36,6 @@ public class GeneCreation {
             else if(guess == 3)
                 result[i] = 'T';
         }
-        return null;
+        return new String(result);
     }
 }
