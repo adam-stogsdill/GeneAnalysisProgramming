@@ -11,6 +11,7 @@ public class GenomeDatabaseError extends Exception {
     @Override
     public void printStackTrace() {
         super.printStackTrace();
+        System.out.println("ERROR {" + this.error + "}");
         System.exit(-1);
     }
 }
