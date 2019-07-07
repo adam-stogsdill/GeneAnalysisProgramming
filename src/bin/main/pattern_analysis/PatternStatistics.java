@@ -4,16 +4,16 @@ import bin.main.Gene_Main.Gene;
 
 import java.util.HashMap;
 
-public class Pattern_Statistics {
+public class PatternStatistics {
     private HashMap<String, Integer> set = new HashMap<>();
     private int restricted_genome_size;
 
-    public Pattern_Statistics(int size, Gene... g1) {
+    public PatternStatistics(int size, Gene... g1) {
         this.restricted_genome_size = size;
         this.constructHashMap(g1);
     }
 
-    public Pattern_Statistics(Gene... g1) {
+    public PatternStatistics(Gene... g1) {
         this.restricted_genome_size = 0;
         this.constructHashMap(g1);
     }
