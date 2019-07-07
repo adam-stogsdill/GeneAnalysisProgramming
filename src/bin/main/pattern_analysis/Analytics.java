@@ -1,4 +1,6 @@
-package bin.main;
+package bin.main.pattern_analysis;
+
+import bin.main.Gene_Main.Gene;
 
 import java.util.Arrays;
 

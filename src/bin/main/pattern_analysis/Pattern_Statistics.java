@@ -1,6 +1,6 @@
 package bin.main.pattern_analysis;
 
-import bin.main.Gene;
+import bin.main.Gene_Main.Gene;
 
 import java.util.HashMap;
 

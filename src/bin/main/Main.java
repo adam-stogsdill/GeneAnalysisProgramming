@@ -1,6 +1,8 @@
 package bin.main;
 
 import bin.main.GUI.Window;
+import bin.main.Gene_Main.Gene;
+import bin.main.Gene_Main.GeneCreation;
 import bin.main.pattern_analysis.Pattern_Statistics;
 
 import javax.swing.*;

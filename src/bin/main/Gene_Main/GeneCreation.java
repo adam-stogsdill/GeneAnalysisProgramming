@@ -1,4 +1,4 @@
-package bin.main;
+package bin.main.Gene_Main;
 
 
 import bin.main.ErrorManagement.GENEERROR;
