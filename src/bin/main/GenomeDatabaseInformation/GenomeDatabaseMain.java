@@ -2,6 +2,7 @@ package bin.main.GenomeDatabaseInformation;
 
 import bin.main.ErrorManagement.GenomeDatabaseError;
 
+import java.io.*;
 import java.util.ArrayList;
 
 public class GenomeDatabaseMain {
@@ -15,7 +16,16 @@ public class GenomeDatabaseMain {
      */
     public static void LoadDatabase() {
         try {
-            ranges.add(new GenomeRanges(1, 'p', 3, 6, 3, 1, 7100000));
+            BufferedReader bf = new BufferedReader(new FileReader("resources/GenomeRanges"));
+            String string;
+            while((string = bf.readLine()) != null){
+                String[] parsed = string.split(" ");
+                ranges.add(new GenomeRanges(new Integer(parsed[0].substring(0,1)), parsed[0].charAt(1), new Integer(parsed[0].substring(2,3)), new Integer(parsed[0].substring(3,4)), new Integer(parsed[0].substring(5)), new Integer(parsed[1]), new Integer(parsed[2])));
+            }
+
+
+
+            /*ranges.add(new GenomeRanges(1, 'p', 3, 6, 3, 1, 7100000));
             ranges.add(new GenomeRanges(1, 'p', 3, 6, 2, 7100001, 15900000));
             ranges.add(new GenomeRanges(1, 'p', 3, 6, 1, 15900001, 27600000));
             ranges.add(new GenomeRanges(1, 'p', 3, 5, 0, 27600001, 34300000));
@@ -32,10 +42,16 @@ public class GenomeDatabaseMain {
             ranges.add(new GenomeRanges(1, 'p', 2, 2, 3, 84000001, 87900000));
             ranges.add(new GenomeRanges(1, 'p', 2, 2, 2, 87900001, 91500000));
             ranges.add(new GenomeRanges(1, 'p', 2, 2, 1, 91500001, 94300000));
-            ranges.add(new GenomeRanges(1, 'p', 2, 1, 0, 94300001, 10670000));
-            //ranges.add(new GenomeRanges())
+            ranges.add(new GenomeRanges(1, 'p', 2, 1, 0, 94300001, 106700000));
+            ranges.add(new GenomeRanges(1, 'p', 1, 3, 3, 106700001, 111200000));
+            ranges.add(new GenomeRanges(1, 'p', 1, 3, 1, 111200001, 115500000));
+            ranges.add(new GenomeRanges(1, ''))*/
 
 
+        } catch (FileNotFoundException f){
+            f.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         } catch (GenomeDatabaseError genomeDatabaseError) {
             genomeDatabaseError.printStackTrace();
         }

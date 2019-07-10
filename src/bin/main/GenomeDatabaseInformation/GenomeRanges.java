@@ -19,9 +19,9 @@ public class GenomeRanges {
     public GenomeRanges(int chromosome, char arm, int region, int band, int sub_band, int lowerBound, int upperBound) throws GenomeDatabaseError {
         if (chromosome < 1 || chromosome > 23)
             throw new GenomeDatabaseError(GenomeError.INVALID_CHROMOSOME_NUMBER);
-        if (arm != 'p' || arm != 'q')
+        if (arm != 'p' && arm != 'q')
             throw new GenomeDatabaseError(GenomeError.INVALID_ARM_CHARACTER);
-        if (this.singleDigit(region) || this.singleDigit(band) || this.singleDigit(sub_band))
+        if (!this.singleDigit(region) || !this.singleDigit(band) || !this.singleDigit(sub_band))
             throw new GenomeDatabaseError(GenomeError.INVALID_NUMBER_LENGTH);
 
         this.chromosome = chromosome;
@@ -37,6 +37,6 @@ public class GenomeRanges {
     }
 
     private boolean singleDigit(int i) {
-        return !(i % 10 == 0);
+        return !(i % 10 == 0) || i == 0;
     }
 }

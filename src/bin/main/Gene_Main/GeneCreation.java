@@ -12,6 +12,10 @@ Guanine(G)
 Cytosine(C)
 Thymine(T)
  */
+
+/**
+ * This class is used for testing purposes so you can test certain systems inside of the actual program.
+ */
 public class GeneCreation {
 
     public static void check_if_Possible(char[] sequence) throws GeneCreationError {

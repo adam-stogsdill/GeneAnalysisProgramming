@@ -31,8 +31,17 @@ public class Gene {
     }
 
 
+    /**
+     * Returns the number of pairs inside of the gene.
+     * @return Number of pairs in gene.
+     */
     public int size(){ return this.gene_information.length; }
 
+
+    /**
+     * Simply returns the gene's pairs inside of a String to be printed if chosen.
+     * @return Char[] into String
+     */
     @Override
     public String toString(){
         StringBuilder str = new StringBuilder();
@@ -42,6 +51,11 @@ public class Gene {
         return str.toString();
     }
 
+
+    /**
+     * This returns the char array containing each individual pair inside of it.
+     * @return
+     */
     public char[] getGene_information() {
         return gene_information;
     }

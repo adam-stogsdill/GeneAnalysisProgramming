@@ -3,7 +3,8 @@ package bin.main;
 import bin.main.GUI.Window;
 import bin.main.Gene_Main.Gene;
 import bin.main.Gene_Main.GeneCreation;
-import bin.main.pattern_analysis.Pattern_Statistics;
+import bin.main.GenomeDatabaseInformation.GenomeDatabaseMain;
+import bin.main.pattern_analysis.PatternStatistics;
 
 import javax.swing.*;
 
@@ -14,7 +15,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        JFrame j = new JFrame("Gene Ally");
+        /*JFrame j = new JFrame("Gene Ally");
         Window w = new Window(WIDTH, HEIGHT);
 
         j.setSize(WIDTH, HEIGHT);
@@ -22,14 +23,15 @@ public class Main {
         j.setResizable(false);
         j.add(w);
 
-        j.setVisible(true);
+        j.setVisible(true);*/
 
+        GenomeDatabaseMain.LoadDatabase();
 
-        Gene g = new Gene("RACTA");
+        //Gene g = new Gene("RACTA");
 
         //Analytics.N_W_Algorithm(new Gene("GATC"), new Gene("TTACT"));
         Gene g1 = new Gene(GeneCreation.randomGene(100));
-        Pattern_Statistics unrestricted_size = new Pattern_Statistics(g1);
+        //PatternStatistics unrestricted_size = new PatternStatistics(g1);
         //System.out.println(unrestricted_size.toString());
     }
 
