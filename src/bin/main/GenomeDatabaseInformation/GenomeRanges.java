@@ -32,11 +32,13 @@ public class GenomeRanges {
         this.upperBound = upperBound;
         this.lowerBound = lowerBound;
 
-
-
     }
 
     private boolean singleDigit(int i) {
         return !(i % 10 == 0) || i == 0;
+    }
+
+    public boolean isPossible(int chromosome, int lowerBound, int higherBound){
+        return GenomeDatabaseMain.ranges.get(chromosome).get(0).lowerBound >= lowerBound && GenomeDatabaseMain.ranges.get(chromosome).get(GenomeDatabaseMain.ranges.get(chromosome).size()-1).upperBound <= higherBound;
     }
 }

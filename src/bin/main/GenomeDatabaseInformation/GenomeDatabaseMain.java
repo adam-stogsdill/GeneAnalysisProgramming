@@ -3,11 +3,13 @@ package bin.main.GenomeDatabaseInformation;
 import bin.main.ErrorManagement.GenomeDatabaseError;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GenomeDatabaseMain {
 
-    private static ArrayList<GenomeRanges> ranges = new ArrayList<>();
+    public static HashMap<Integer, ArrayList<GenomeRanges>> ranges = new HashMap<>();
 
     /*
     Obtaining information from
@@ -20,7 +22,13 @@ public class GenomeDatabaseMain {
             String string;
             while((string = bf.readLine()) != null){
                 String[] parsed = string.split(" ");
-                ranges.add(new GenomeRanges(new Integer(parsed[0].substring(0,1)), parsed[0].charAt(1), new Integer(parsed[0].substring(2,3)), new Integer(parsed[0].substring(3,4)), new Integer(parsed[0].substring(5)), new Integer(parsed[1]), new Integer(parsed[2])));
+                if(ranges.containsKey(new Integer(parsed[0].substring(0,1))))
+                    ranges.get(new Integer(parsed[0].substring(0,1))).add(new GenomeRanges(new Integer(parsed[0].substring(0,1)), parsed[0].charAt(1), new Integer(parsed[0].substring(2,3)), new Integer(parsed[0].substring(3,4)), new Integer(parsed[0].substring(5)), new Integer(parsed[1]), new Integer(parsed[2])));
+                else{
+                    ArrayList<GenomeRanges> enter = new ArrayList<>();
+                    enter.add(new GenomeRanges(new Integer(parsed[0].substring(0,1)), parsed[0].charAt(1), new Integer(parsed[0].substring(2,3)), new Integer(parsed[0].substring(3,4)), new Integer(parsed[0].substring(5)), new Integer(parsed[1]), new Integer(parsed[2])));
+                    ranges.put(new Integer(parsed[0].substring(0,1)),enter);
+                }
             }
 
 
@@ -57,7 +65,5 @@ public class GenomeDatabaseMain {
         }
     }
 
-    public static void isRangePossible() {
 
-    }
 }

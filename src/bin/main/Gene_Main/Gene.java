@@ -15,12 +15,13 @@ https://towardsdatascience.com/dna-sequence-data-analysis-starting-off-in-bioinf
 public class Gene {
 
     private char[] gene_information;
+    private GeneCytogenicLocation loc;
 
     /**
      * To create a gene one must first feed the length of the gene sequence for further creation
      * @param sequence This is simply a sequence that you already have to feed into the information
      */
-    public Gene(String sequence){
+    public Gene(String sequence, GeneCytogenicLocation loc){
         try {
             GeneCreation.check_if_Possible(sequence.toCharArray());
         } catch (GeneCreationError e) {

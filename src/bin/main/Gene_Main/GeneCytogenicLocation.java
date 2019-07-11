@@ -15,7 +15,14 @@ public class GeneCytogenicLocation {
     private int sub_band;
 
 
-    private GeneCytogenicLocation(int chromosome, char arm, int region, int band) throws GeneCreationError {
+    public void GeneCytogenicLocation(int chromosome, char arm, int region, int band) throws GeneCreationError {
+        if (chromosome < 1 || chromosome > 23)
+            throw new GeneCreationError(GENEERROR.INVALID_CHROMOSOME);
+        if (arm != 'p' || arm != 'q')
+            throw new GeneCreationError(GENEERROR.INVALID_ARM);
+    }
+
+    public void GeneCytogenicLocation(int chromosome, char arm, int region, int band, int sub_band) throws GeneCreationError {
         if (chromosome < 1 || chromosome > 23)
             throw new GeneCreationError(GENEERROR.INVALID_CHROMOSOME);
         if (arm != 'p' || arm != 'q')

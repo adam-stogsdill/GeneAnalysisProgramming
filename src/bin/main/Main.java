@@ -28,7 +28,7 @@ public class Main {
 
         j.setVisible(true);
 
-        //GenomeDatabaseMain.LoadDatabase();
+        GenomeDatabaseMain.LoadDatabase();
 
         //Gene g = new Gene("RACTA");
 
