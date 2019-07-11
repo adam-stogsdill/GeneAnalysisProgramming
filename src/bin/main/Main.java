@@ -2,12 +2,12 @@ package bin.main;
 
 import bin.main.GUI.Window;
 import bin.main.Gene_Main.Gene;
-import bin.main.Gene_Main.GeneCreation;
+import bin.main.Gene_Main.GeneFileReader;
 import bin.main.GenomeDatabaseInformation.GenomeDatabaseMain;
 import bin.main.ThreadManagement.ThreadManager;
-import bin.main.pattern_analysis.PatternStatistics;
 
 import javax.swing.*;
+import java.io.IOException;
 
 public class Main {
 
@@ -33,7 +33,13 @@ public class Main {
         //Gene g = new Gene("RACTA");
 
         //Analytics.N_W_Algorithm(new Gene("GATC"), new Gene("TTACT"));
-        //Gene g1 = new Gene(GeneCreation.randomGene(100));
+        Gene CTFR = null;
+        try {
+            CTFR = new Gene(GeneFileReader.getInformation("resources/CTFR.fasta"));
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        System.out.println(CTFR.size());
         //PatternStatistics unrestricted_size = new PatternStatistics(g1);
         //System.out.println(unrestricted_size.toString());
     }
