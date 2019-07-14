@@ -2,8 +2,10 @@ package bin.main.GenomeDatabaseInformation;
 
 import bin.main.ErrorManagement.GenomeDatabaseError;
 
-import java.io.*;
-import java.lang.reflect.Array;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -20,14 +22,14 @@ public class GenomeDatabaseMain {
         try {
             BufferedReader bf = new BufferedReader(new FileReader("resources/GenomeRanges"));
             String string;
-            while((string = bf.readLine()) != null){
+            while ((string = bf.readLine()) != null) {
                 String[] parsed = string.split(" ");
-                if(ranges.containsKey(new Integer(parsed[0].substring(0,1))))
-                    ranges.get(new Integer(parsed[0].substring(0,1))).add(new GenomeRanges(new Integer(parsed[0].substring(0,1)), parsed[0].charAt(1), new Integer(parsed[0].substring(2,3)), new Integer(parsed[0].substring(3,4)), new Integer(parsed[0].substring(5)), new Integer(parsed[1]), new Integer(parsed[2])));
-                else{
+                if (ranges.containsKey(Integer.valueOf(parsed[0].substring(0, 1))))
+                    ranges.get(Integer.valueOf(parsed[0].substring(0, 1))).add(new GenomeRanges(Integer.valueOf(parsed[0].substring(0, 1)), parsed[0].charAt(1), Integer.valueOf(parsed[0].substring(2, 3)), Integer.valueOf(parsed[0].substring(3, 4)), Integer.valueOf(parsed[0].substring(5)), Integer.valueOf(parsed[1]), Integer.valueOf(parsed[2])));
+                else {
                     ArrayList<GenomeRanges> enter = new ArrayList<>();
-                    enter.add(new GenomeRanges(new Integer(parsed[0].substring(0,1)), parsed[0].charAt(1), new Integer(parsed[0].substring(2,3)), new Integer(parsed[0].substring(3,4)), new Integer(parsed[0].substring(5)), new Integer(parsed[1]), new Integer(parsed[2])));
-                    ranges.put(new Integer(parsed[0].substring(0,1)),enter);
+                    enter.add(new GenomeRanges(Integer.valueOf(parsed[0].substring(0, 1)), parsed[0].charAt(1), Integer.valueOf(parsed[0].substring(2, 3)), Integer.valueOf(parsed[0].substring(3, 4)), Integer.valueOf(parsed[0].substring(5)), Integer.valueOf(parsed[1]), Integer.valueOf(parsed[2])));
+                    ranges.put(Integer.valueOf(parsed[0].substring(0, 1)), enter);
                 }
             }
 
@@ -56,7 +58,7 @@ public class GenomeDatabaseMain {
             ranges.add(new GenomeRanges(1, ''))*/
 
 
-        } catch (FileNotFoundException f){
+        } catch (FileNotFoundException f) {
             f.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
