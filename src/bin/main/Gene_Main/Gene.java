@@ -19,9 +19,10 @@ public class Gene {
 
     /**
      * To create a gene one must first feed the length of the gene sequence for further creation
+     *
      * @param sequence This is simply a sequence that you already have to feed into the information
      */
-    public Gene(String sequence, GeneCytogenicLocation loc){
+    public Gene(String sequence, GeneCytogenicLocation loc) {
         try {
             GeneCreation.check_if_Possible(sequence.toCharArray());
         } catch (GeneCreationError e) {
@@ -31,7 +32,7 @@ public class Gene {
         this.gene_information = sequence.toCharArray();
     }
 
-    public Gene(String sequence){
+    public Gene(String sequence) {
         try {
             GeneCreation.check_if_Possible(sequence.toCharArray());
         } catch (GeneCreationError e) {
@@ -40,22 +41,25 @@ public class Gene {
         }
         this.gene_information = sequence.toCharArray();
     }
-
 
 
     /**
      * Returns the number of pairs inside of the gene.
+     *
      * @return Number of pairs in gene.
      */
-    public int size(){ return this.gene_information.length; }
+    public int size() {
+        return this.gene_information.length;
+    }
 
 
     /**
      * Simply returns the gene's pairs inside of a String to be printed if chosen.
+     *
      * @return Char[] into String
      */
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder str = new StringBuilder();
         for (int i = 0; i < this.gene_information.length; i++) {
             str.append(this.gene_information[i]);
@@ -66,7 +70,7 @@ public class Gene {
 
     /**
      * This returns the char array containing each individual pair inside of it.
-     * @return
+     * @return Returns the gene information
      */
     public char[] getGene_information() {
         return gene_information;
