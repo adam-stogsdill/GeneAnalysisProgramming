@@ -36,7 +36,7 @@ public class Main {
         Gene CTFR = null;
         try {
             CTFR = new Gene(GeneFileReader.getInformation("resources/CTFR.fasta"));
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         System.out.println(CTFR.size());

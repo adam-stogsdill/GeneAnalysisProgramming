@@ -35,7 +35,7 @@ public class GenomeRanges {
             throw new GenomeDatabaseError(GenomeError.INVALID_CHROMOSOME_NUMBER);
         if (arm != 'p' && arm != 'q')
             throw new GenomeDatabaseError(GenomeError.INVALID_ARM_CHARACTER);
-        if (!this.singleDigit(region) || !this.singleDigit(band) || !this.singleDigit(sub_band))
+        if (!singleDigit(region) || !singleDigit(band) || !singleDigit(sub_band))
             throw new GenomeDatabaseError(GenomeError.INVALID_NUMBER_LENGTH);
 
         this.chromosome = chromosome;
@@ -55,7 +55,7 @@ public class GenomeRanges {
      * @return If true then the input is a singular digit.
      */
     @Contract(pure = true)
-    private boolean singleDigit(int i) {
+    public static boolean singleDigit(int i) {
         return !(i % 10 == 0) || i == 0;
     }
 
