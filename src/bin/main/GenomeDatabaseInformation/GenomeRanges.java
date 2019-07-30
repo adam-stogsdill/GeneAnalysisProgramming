@@ -2,7 +2,7 @@ package bin.main.GenomeDatabaseInformation;
 
 import bin.main.ErrorManagement.GenomeDatabaseError;
 import bin.main.ErrorManagement.GenomeError;
-import org.jetbrains.annotations.Contract;
+
 
 public class GenomeRanges {
 
@@ -54,7 +54,6 @@ public class GenomeRanges {
      * @param i The input.
      * @return If true then the input is a singular digit.
      */
-    @Contract(pure = true)
     public static boolean singleDigit(int i) {
         return !(i % 10 == 0) || i == 0;
     }

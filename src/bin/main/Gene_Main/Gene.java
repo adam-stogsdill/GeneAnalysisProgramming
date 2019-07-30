@@ -2,6 +2,7 @@ package bin.main.Gene_Main;
 
 
 import bin.main.ErrorManagement.GeneCreationError;
+import bin.main.ErrorManagement.GenomeDatabaseError;
 
 /*
 Adenine(A)
@@ -29,17 +30,28 @@ public class Gene {
             e.printStackTrace();
             return;
         }
+        this.loc = loc;
         this.gene_information = sequence.toCharArray();
     }
 
     public Gene(String sequence) {
+        String[] parsed_sequence = sequence.split(",");
         try {
-            GeneCreation.check_if_Possible(sequence.toCharArray());
+            GeneCreation.check_if_Possible(parsed_sequence[5].toCharArray());
         } catch (GeneCreationError e) {
             e.printStackTrace();
             return;
         }
-        this.gene_information = sequence.toCharArray();
+        try {
+            this.loc = new GeneCytogenicLocation(Integer.valueOf(parsed_sequence[0]), parsed_sequence[1].charAt(0),
+                    Integer.valueOf(parsed_sequence[2]), Integer.valueOf(parsed_sequence[3]), Integer.valueOf(parsed_sequence[4]));
+            //System.out.println(this.loc);
+        }catch(GeneCreationError e){
+            e.printStackTrace();
+        }catch (GenomeDatabaseError e){
+            e.printStackTrace();
+        }
+        this.gene_information = parsed_sequence[5].toCharArray();
     }
 
 
@@ -74,5 +86,10 @@ public class Gene {
      */
     public char[] getGene_information() {
         return gene_information;
+    }
+
+
+    public GeneCytogenicLocation getCytogenicLocation() {
+        return loc;
     }
 }

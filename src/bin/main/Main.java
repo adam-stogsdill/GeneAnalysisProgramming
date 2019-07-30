@@ -1,7 +1,9 @@
 package bin.main;
 
+import bin.main.ErrorManagement.GeneCreationError;
 import bin.main.GUI.Window;
 import bin.main.Gene_Main.Gene;
+import bin.main.Gene_Main.GeneDatabase;
 import bin.main.Gene_Main.GeneFileReader;
 import bin.main.GenomeDatabaseInformation.GenomeDatabaseMain;
 import bin.main.ThreadManagement.ThreadManager;
@@ -16,7 +18,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        JFrame j = new JFrame("Gene Ally");
+        /*JFrame j = new JFrame("Gene Ally");
         Window w = new Window(WIDTH, HEIGHT);
 
         j.setSize(WIDTH, HEIGHT);
@@ -26,20 +28,22 @@ public class Main {
 
         ThreadManager threadManager = new ThreadManager(w);
 
-        j.setVisible(true);
+        j.setVisible(true);*/
 
         GenomeDatabaseMain.LoadDatabase();
 
         //Gene g = new Gene("RACTA");
 
         //Analytics.N_W_Algorithm(new Gene("GATC"), new Gene("TTACT"));
-        Gene CTFR = null;
-        try {
-            CTFR = new Gene(GeneFileReader.getInformation("resources/CTFR.fasta"));
-        } catch (IOException e) {
+        try{
+            GeneDatabase.LoadDatabase();
+        }catch(IOException e){
             e.printStackTrace();
+        }catch(GeneCreationError f){
+            f.printStackTrace();
         }
-        System.out.println(CTFR.size());
+
+        GeneDatabase.printDatabase();
         //PatternStatistics unrestricted_size = new PatternStatistics(g1);
         //System.out.println(unrestricted_size.toString());
     }

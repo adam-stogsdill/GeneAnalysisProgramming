@@ -12,7 +12,7 @@ public class GeneFileReader {
         while ((s = bf.readLine()) != null) {
             result += s;
         }
-        System.out.println(result);
+        //System.out.println(result);
         return result;
     }
 }
