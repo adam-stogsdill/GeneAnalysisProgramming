@@ -15,3 +15,7 @@ This program will implement the Cytogenic Location organization technique which 
 ### CTFR (cystic fibrosis transmembrane conductance regulator)
 
 FIRST GENE USABLE IN PROGRAM. Located at 7q31.2. https://ghr.nlm.nih.gov/gene/CFTR#location
+
+### AAAS(aladin WD repeat nucleoporin)
+
+Located at 12q13.13. https://ghr.nlm.nih.gov/gene/AAAS#

@@ -37,21 +37,22 @@ public class Gene {
     public Gene(String sequence) {
         String[] parsed_sequence = sequence.split(",");
         try {
-            GeneCreation.check_if_Possible(parsed_sequence[5].toCharArray());
+            GeneCreation.check_if_Possible(parsed_sequence[7].toCharArray());
         } catch (GeneCreationError e) {
             e.printStackTrace();
             return;
         }
         try {
             this.loc = new GeneCytogenicLocation(Integer.valueOf(parsed_sequence[0]), parsed_sequence[1].charAt(0),
-                    Integer.valueOf(parsed_sequence[2]), Integer.valueOf(parsed_sequence[3]), Integer.valueOf(parsed_sequence[4]));
+                    Integer.valueOf(parsed_sequence[2]), Integer.valueOf(parsed_sequence[3]), Integer.valueOf(parsed_sequence[4]),
+                    Integer.valueOf(parsed_sequence[5]), Integer.valueOf(parsed_sequence[6]));
             //System.out.println(this.loc);
         }catch(GeneCreationError e){
             e.printStackTrace();
         }catch (GenomeDatabaseError e){
             e.printStackTrace();
         }
-        this.gene_information = parsed_sequence[5].toCharArray();
+        this.gene_information = parsed_sequence[7].toCharArray();
     }
 
 

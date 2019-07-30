@@ -29,7 +29,8 @@ public class GeneDatabase {
 
     public static String printDatabase(){
         for(String s: geneDatabase.keySet()){
-            System.out.printf("Gene_Name:%s\t%s\n\t%s\n", s,geneDatabase.get(s).getCytogenicLocation().toString(), geneDatabase.get(s));
+            System.out.printf("Gene_Name:%s\t%s\tRange:%s\n\t%s\n", s,geneDatabase.get(s).getCytogenicLocation().toString(), geneDatabase.get(s).getCytogenicLocation().getRange()
+                    , geneDatabase.get(s));
         }
         return "";
     }

@@ -19,6 +19,7 @@ public class GenomeDatabaseMain {
     National Center for Biotechnology Information
      */
     public static void LoadDatabase() {
+        //TODO FIX LOADING
         try {
             BufferedReader bf = new BufferedReader(new FileReader("resources/GenomeRanges"));
             String string;
