@@ -19,3 +19,7 @@ FIRST GENE USABLE IN PROGRAM. Located at 7q31.2. https://ghr.nlm.nih.gov/gene/CF
 ### AAAS(aladin WD repeat nucleoporin)
 
 Located at 12q13.13. https://ghr.nlm.nih.gov/gene/AAAS#
+
+### ABAT(4-aminobutyrate aminotransferase)
+
+Located at 16p13.2. https://ghr.nlm.nih.gov/gene/ABAT#location

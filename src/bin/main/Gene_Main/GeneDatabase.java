@@ -5,7 +5,10 @@ import bin.main.ErrorManagement.GeneCreationError;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Set;
 
 public class GeneDatabase {
     private static HashMap<String, Gene> geneDatabase = new HashMap<>();
@@ -28,8 +31,10 @@ public class GeneDatabase {
 
 
     public static String printDatabase(){
-        for(String s: geneDatabase.keySet()){
-            System.out.printf("Gene_Name:%s\t%s\tRange:%s\n\t%s\n", s,geneDatabase.get(s).getCytogenicLocation().toString(), geneDatabase.get(s).getCytogenicLocation().getRange()
+        String[] list = geneDatabase.keySet().toArray(new String[geneDatabase.keySet().size()]);
+        Arrays.sort(list);
+        for(String s: list){
+            System.out.printf("Gene_Name:%s\t%s\tRange: %s\n\t%s\n", s,geneDatabase.get(s).getCytogenicLocation().toString(), geneDatabase.get(s).getCytogenicLocation().getRange()
                     , geneDatabase.get(s));
         }
         return "";

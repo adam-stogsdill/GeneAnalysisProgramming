@@ -37,12 +37,9 @@ public class Main {
         //Analytics.N_W_Algorithm(new Gene("GATC"), new Gene("TTACT"));
         try{
             GeneDatabase.LoadDatabase();
-        }catch(IOException e){
+        }catch(IOException | GeneCreationError e){
             e.printStackTrace();
-        }catch(GeneCreationError f){
-            f.printStackTrace();
         }
-
         GeneDatabase.printDatabase();
         //PatternStatistics unrestricted_size = new PatternStatistics(g1);
         //System.out.println(unrestricted_size.toString());
