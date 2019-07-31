@@ -11,7 +11,10 @@ public class Patient {
         this.patient_data = patient_data;
     }
 
+    public void Mutations(){
 
+
+    }
 
     public String getPatient_name() {return this.patient_name;}
     public ChromosomeData getPatient_data(){return this.patient_data;}

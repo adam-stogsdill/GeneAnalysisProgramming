@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ChromosomeData {
-    private static HashMap<Integer, ArrayList<Gene>> patient_chromosome_information;
+    private HashMap<Integer, ArrayList<Gene>> chromosome_information;
 
 
     //How to organize Chromosome Data File
@@ -32,5 +32,7 @@ public class ChromosomeData {
         }
     }
 
-
+    public HashMap<Integer, ArrayList<Gene>> getChromosome_information() {
+        return chromosome_information;
+    }
 }

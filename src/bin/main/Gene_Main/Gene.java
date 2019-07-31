@@ -17,6 +17,7 @@ public class Gene {
 
     private char[] gene_information;
     private GeneCytogenicLocation loc;
+    private String name;
 
     /**
      * To create a gene one must first feed the length of the gene sequence for further creation
@@ -34,8 +35,9 @@ public class Gene {
         this.gene_information = sequence.toCharArray();
     }
 
-    public Gene(String sequence) {
+    public Gene(String sequence, String name) {
         String[] parsed_sequence = sequence.split(",");
+        this.name = name;
         try {
             GeneCreation.check_if_Possible(parsed_sequence[7].toCharArray());
         } catch (GeneCreationError e) {
@@ -89,6 +91,7 @@ public class Gene {
         return gene_information;
     }
 
+    public String getName(){return this.name;}
 
     public GeneCytogenicLocation getCytogenicLocation() {
         return loc;

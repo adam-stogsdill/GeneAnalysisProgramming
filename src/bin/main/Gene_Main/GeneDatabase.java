@@ -5,17 +5,12 @@ import bin.main.ErrorManagement.GeneCreationError;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.Set;
 
 public class GeneDatabase {
-    private static HashMap<String, Gene> geneDatabase = new HashMap<>();
-
-    public HashMap<String, Gene> getGeneDatabase() {
-        return geneDatabase;
-    }
+    private static HashMap<Integer, ArrayList<Gene>> nonMutatedGenome = new HashMap<>();
 
     public static void LoadDatabase() throws IOException, GeneCreationError {
         File[] files = new File("resources/GeneDatabaseInformation").listFiles();
@@ -24,19 +19,29 @@ public class GeneDatabase {
                 if(!f.getName().substring(f.getName().indexOf(".")).equals(".fasta"))
                     throw new GeneCreationError(GENEERROR.INVALID_FILE_FORMAT);
                 //System.out.printf("%s\n", f.getName());
-                geneDatabase.put(f.getName().substring(0,f.getName().indexOf(".")), new Gene(GeneFileReader.getInformation(f.getPath())));
+                String gene_name = f.getName().substring(0,f.getName().indexOf("."));
+                Gene input = new Gene(GeneFileReader.getInformation(f.getPath()), gene_name);
+                int CHROMOSOME = input.getCytogenicLocation().getChromosome();
+                if(!nonMutatedGenome.containsKey(CHROMOSOME)){
+                    nonMutatedGenome.put(CHROMOSOME, new ArrayList<>());
+                }
+                nonMutatedGenome.get(CHROMOSOME).add(input);
             }
         }
     }
 
 
     public static String printDatabase(){
-        String[] list = geneDatabase.keySet().toArray(new String[geneDatabase.keySet().size()]);
+        Integer[] list = nonMutatedGenome.keySet().toArray(new Integer[nonMutatedGenome.keySet().size()]);
         Arrays.sort(list);
-        for(String s: list){
-            System.out.printf("Gene_Name:%s\t%s\tRange: %s\n\t%s\n", s,geneDatabase.get(s).getCytogenicLocation().toString(), geneDatabase.get(s).getCytogenicLocation().getRange()
-                    , geneDatabase.get(s));
+        for(Integer s: list){
+            for(Gene g: nonMutatedGenome.get(s)){
+                System.out.printf("Gene_Name:%s\t%s\tRange: %s\n\t%s\n", g.getName(),g.getCytogenicLocation().toString(), g.getCytogenicLocation().getRange(),
+                        g);
+            }
         }
         return "";
     }
+
+
 }
