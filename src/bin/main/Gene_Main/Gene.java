@@ -35,6 +35,16 @@ public class Gene {
         this.gene_information = sequence.toCharArray();
     }
 
+    public Gene(String sequence) {
+        try {
+            GeneCreation.check_if_Possible(sequence.toCharArray());
+        } catch (GeneCreationError e) {
+            e.printStackTrace();
+            return;
+        }
+        this.gene_information = sequence.toCharArray();
+    }
+
     public Gene(String sequence, String name) {
         String[] parsed_sequence = sequence.split(",");
         this.name = name;
