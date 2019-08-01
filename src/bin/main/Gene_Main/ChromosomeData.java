@@ -4,11 +4,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ChromosomeData {
-    private HashMap<Integer, ArrayList<Gene>> chromosome_information;
+    private HashMap<Integer, Gene> chromosome_information;
 
 
     //How to organize Chromosome Data File
@@ -32,7 +31,12 @@ public class ChromosomeData {
         }
     }
 
-    public HashMap<Integer, ArrayList<Gene>> getChromosome_information() {
+    public ChromosomeData(Integer chromosome, String sequence) {
+        this.chromosome_information = new HashMap<>();
+        this.chromosome_information.put(chromosome, new Gene(sequence));
+    }
+
+    public HashMap<Integer, Gene> getChromosome_information() {
         return chromosome_information;
     }
 }
