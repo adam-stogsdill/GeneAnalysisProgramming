@@ -1,6 +1,4 @@
 package bin.main.Gene_Main;
-
-
 import bin.main.ErrorManagement.GENEERROR;
 import bin.main.ErrorManagement.GeneCreationError;
 
@@ -29,6 +27,7 @@ public class GeneCreation {
     }
 
     public static String randomGene(int size) {
+        System.out.println("Generating a random gene of " + size + " pairs!");
         Random random = new Random();
         char[] result = new char[size];
         for (int i = 0; i < size; i++) {
@@ -42,6 +41,7 @@ public class GeneCreation {
             else if (guess == 3)
                 result[i] = 'T';
         }
+        System.out.println("Gene has been created!");
         return new String(result);
     }
 }
