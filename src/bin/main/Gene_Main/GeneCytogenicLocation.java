@@ -57,5 +57,9 @@ public class GeneCytogenicLocation {
 
     public String getRange() {return "("+ this.start + "-" + this.stop+")";}
 
+    public Integer getStart() {return this.start;}
+
+    public Integer getStop() {return this.stop;}
+
     public int getChromosome() {return this.chromosome;}
 }

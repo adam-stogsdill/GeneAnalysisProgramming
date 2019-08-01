@@ -86,8 +86,8 @@ public class Gene {
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
-        for (int i = 0; i < this.gene_information.length; i++) {
-            str.append(this.gene_information[i]);
+        for (char c : this.gene_information) {
+            str.append(c);
         }
         return str.toString();
     }
