@@ -50,6 +50,10 @@ public class PatternStatistics {
         }
     }
 
+    /**
+     * Method that uses the restraints given by the program for creating slices of the information.
+     * @param gene
+     */
     private void restrictedGenePatternLoop(Gene gene) {
         for (int i = 0; i <= gene.size() - this.restricted_genome_size; i++) {
             String gene_String = gene.toString().substring(i, i + this.restricted_genome_size);
@@ -75,7 +79,7 @@ public class PatternStatistics {
         System.out.println("\nBUILDING PATTERN STRING THAT CONTAINS RESTRICTED GENOME SIZE OF " + this.restricted_genome_size + "\n");
         StringBuilder s = new StringBuilder();
         for (String g : this.set.keySet()) {
-            s.append(g + ": " + this.set.get(g) + "\n");
+            s.append(g).append(": ").append(this.set.get(g)).append("\n");
         }
         return s.toString();
     }

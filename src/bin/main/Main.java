@@ -1,11 +1,14 @@
 package bin.main;
 
 import bin.main.ErrorManagement.GeneCreationError;
+import bin.main.GUI.Window;
 import bin.main.Gene_Main.ChromosomeData;
 import bin.main.Gene_Main.GeneCreation;
 import bin.main.Gene_Main.GeneDatabase;
 import bin.main.Patient_Information.Patient;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 
 public class Main {
@@ -15,8 +18,8 @@ public class Main {
 
 
     public static void main(String[] args) {
-        /*JFrame j = new JFrame("Gene Ally");
-        Window w = new Window(WIDTH, HEIGHT);
+        JFrame j = new JFrame("Gene Ally");
+        /*Window w = new Window(WIDTH, HEIGHT);
 
         j.setSize(WIDTH, HEIGHT);
         j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,6 +35,10 @@ public class Main {
         //Gene g = new Gene("RACTA");
 
         //Analytics.N_W_Algorithm(new Gene("GATC"), new Gene("TTACT"));
+
+        j.setContentPane(new Window());
+
+
         try{
             GeneDatabase.LoadDatabase();
         }catch(IOException | GeneCreationError e){

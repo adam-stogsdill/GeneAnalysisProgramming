@@ -10,10 +10,13 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 public class GeneDatabase {
+
+    //This is the data structure that stores all of the database information. It is organized by Chromosome #.
     public static HashMap<Integer, ArrayList<Gene>> nonMutatedGenome = new HashMap<>();
 
     public static void LoadDatabase() throws IOException, GeneCreationError {
         File[] files = new File("resources/GeneDatabaseInformation").listFiles();
+        assert files != null;
         for(File f: files){
             if (f.isFile()){
                 if(!f.getName().substring(f.getName().indexOf(".")).equals(".fasta"))
@@ -31,15 +34,16 @@ public class GeneDatabase {
     }
 
 
-    public static String printDatabase(){
+    public static void printDatabase(){
         Integer[] list = nonMutatedGenome.keySet().toArray(new Integer[nonMutatedGenome.keySet().size()]);
         Arrays.sort(list);
         for(Integer s: list){
             for(Gene g: nonMutatedGenome.get(s)){
-                System.out.printf("Gene_Name:%s\t%s\tRange: %s\n\t%s\n", g.getName(),g.getCytogenicLocation().toString(), g.getCytogenicLocation().getRange(), g);
+                //This print statment nullifys the printing of the actual Gene for cleaner terminal output
+                System.out.printf("Gene_Name:%s\t%s\tRange: %s\n", g.getName(),g.getCytogenicLocation().toString(), g.getCytogenicLocation().getRange());
+                //System.out.printf("Gene_Name:%s\t%s\tRange: %s\n\t%s\n", g.getName(),g.getCytogenicLocation().toString(), g.getCytogenicLocation().getRange(), g);
             }
         }
-        return "";
     }
 
 
