@@ -31,6 +31,11 @@ public class ChromosomeData {
         }
     }
 
+    /**
+     *
+     * @param chromosome
+     * @param sequence
+     */
     public ChromosomeData(Integer chromosome, String sequence) {
         this.chromosome_information = new HashMap<>();
         this.chromosome_information.put(chromosome, new Gene(sequence));
