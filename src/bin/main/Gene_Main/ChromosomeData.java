@@ -6,6 +6,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * Stores the chromosome data and gene sequence provided.
+ */
 public class ChromosomeData {
     private HashMap<Integer, Gene> chromosome_information;
 
@@ -31,11 +34,20 @@ public class ChromosomeData {
         }
     }
 
+    /**
+     * Creates a new instance with the chromosome number and attached gene sequence.  This information is stored in a HashMap.
+     * @param chromosome The chromosome number.
+     * @param sequence The gene sequence.
+     */
     public ChromosomeData(Integer chromosome, String sequence) {
         this.chromosome_information = new HashMap<>();
         this.chromosome_information.put(chromosome, new Gene(sequence));
     }
 
+    /**
+     * Retrieves a HashMap of the stored chromosome information.
+     * @return The chromosome information as a HashMap.
+     */
     public HashMap<Integer, Gene> getChromosome_information() {
         return chromosome_information;
     }

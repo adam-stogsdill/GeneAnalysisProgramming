@@ -13,6 +13,10 @@ Thymine(T)
 Reference Material
 https://towardsdatascience.com/dna-sequence-data-analysis-starting-off-in-bioinformatics-3dba4cea04f
  */
+
+/**
+ * Contains the sequence, location, and name of a specific gene.
+ */
 public class Gene {
 
     private char[] gene_information;
@@ -20,9 +24,11 @@ public class Gene {
     private String name;
 
     /**
-     * To create a gene one must first feed the length of the gene sequence for further creation
+     * Creates a Gene given only the gene sequence and the gene's cytogenic location.
+     * To create a gene one must first feed the length of the gene sequence for further creation.
      *
-     * @param sequence This is simply a sequence that you already have to feed into the information
+     * @param sequence This is simply a sequence that you already have to feed into the information.
+     * @param loc The cytogenic location of the gene.
      */
     public Gene(String sequence, GeneCytogenicLocation loc) {
         try {
@@ -35,6 +41,10 @@ public class Gene {
         this.gene_information = sequence.toCharArray();
     }
 
+    /**
+     * Creates a Gene given only the gene sequence.
+     * @param sequence The sequence of the gene.
+     */
     public Gene(String sequence) {
         try {
             GeneCreation.check_if_Possible(sequence.toCharArray());
@@ -45,6 +55,11 @@ public class Gene {
         this.gene_information = sequence.toCharArray();
     }
 
+    /**
+     * Creates a Gene given only the gene sequence and its name.
+     * @param sequence The sequence of the gene.
+     * @param name The name of the gene.
+     */
     public Gene(String sequence, String name) {
         String[] parsed_sequence = sequence.split(",");
         this.name = name;
