@@ -27,8 +27,9 @@ public class Gene {
      * Creates a Gene given only the gene sequence and the gene's cytogenic location.
      * To create a gene one must first feed the length of the gene sequence for further creation.
      *
-     * @param sequence This is simply a sequence that you already have to feed into the information.
-     * @param loc The cytogenic location of the gene.
+     * @param sequence This is simply a sequence that you already have to feed into the information
+     * @param loc This is the GeneCytogenicLocation of the sequence relative to a chromosome's information
+     *
      */
     public Gene(String sequence, GeneCytogenicLocation loc) {
         try {
@@ -56,8 +57,9 @@ public class Gene {
     }
 
     /**
-     * Creates a Gene given only the gene sequence and its name.
-     * @param sequence The sequence of the gene.
+     * Allows the program to make a Gene with a name. Primarily used for the Gene Database for the user to pursue more information
+     * about the gene and its possible mutation effects.
+     * @param sequence The specified sequence of the Gene with a String that will later be parsed into a char[]
      * @param name The name of the gene.
      */
     public Gene(String sequence, String name) {
@@ -70,9 +72,10 @@ public class Gene {
             return;
         }
         try {
-            this.loc = new GeneCytogenicLocation(Integer.valueOf(parsed_sequence[0]), parsed_sequence[1].charAt(0),
-                    Integer.valueOf(parsed_sequence[2]), Integer.valueOf(parsed_sequence[3]), Integer.valueOf(parsed_sequence[4]),
-                    Integer.valueOf(parsed_sequence[5]), Integer.valueOf(parsed_sequence[6]));
+            this.loc = new GeneCytogenicLocation(Integer.parseInt(parsed_sequence[0]), parsed_sequence[1].charAt(0),
+                    Integer.parseInt(parsed_sequence[2]), Integer.parseInt(parsed_sequence[3]), Integer.parseInt(parsed_sequence[4]),
+                    Integer.parseInt(parsed_sequence[5]), Integer.parseInt(parsed_sequence[6]));
+
             //System.out.println(this.loc);
         }catch(GeneCreationError e){
             e.printStackTrace();
@@ -84,7 +87,7 @@ public class Gene {
 
 
     /**
-     * Returns the number of pairs inside of the gene.
+     * Returns the number of pairs inside of the gene. (Size of the gene_information char[])
      *
      * @return Number of pairs in gene.
      */
