@@ -13,6 +13,10 @@ Thymine(T)
 Reference Material
 https://towardsdatascience.com/dna-sequence-data-analysis-starting-off-in-bioinformatics-3dba4cea04f
  */
+
+/**
+ * Contains the sequence, location, and name of a specific gene.
+ */
 public class Gene {
 
     private char[] gene_information;
@@ -20,7 +24,8 @@ public class Gene {
     private String name;
 
     /**
-     * To create a gene one must first feed the length of the gene sequence for further creation
+     * Creates a Gene given only the gene sequence and the gene's cytogenic location.
+     * To create a gene one must first feed the length of the gene sequence for further creation.
      *
      * @param sequence This is simply a sequence that you already have to feed into the information
      * @param loc This is the GeneCytogenicLocation of the sequence relative to a chromosome's information
@@ -37,6 +42,10 @@ public class Gene {
         this.gene_information = sequence.toCharArray();
     }
 
+    /**
+     * Creates a Gene given only the gene sequence.
+     * @param sequence The sequence of the gene.
+     */
     public Gene(String sequence) {
         try {
             GeneCreation.check_if_Possible(sequence.toCharArray());
@@ -51,7 +60,7 @@ public class Gene {
      * Allows the program to make a Gene with a name. Primarily used for the Gene Database for the user to pursue more information
      * about the gene and its possible mutation effects.
      * @param sequence The specified sequence of the Gene with a String that will later be parsed into a char[]
-     * @param name
+     * @param name The name of the gene.
      */
     public Gene(String sequence, String name) {
         String[] parsed_sequence = sequence.split(",");
@@ -90,7 +99,7 @@ public class Gene {
     /**
      * Simply returns the gene's pairs inside of a String to be printed if chosen.
      *
-     * @return Char[] into String
+     * @return Converted char[] to String.
      */
     @Override
     public String toString() {
@@ -104,14 +113,22 @@ public class Gene {
 
     /**
      * This returns the char array containing each individual pair inside of it.
-     * @return Returns the gene information
+     * @return The gene information.
      */
     public char[] getGene_information() {
         return gene_information;
     }
 
+    /**
+     * This returns the name of the gene.
+     * @return The name of the gene.
+     */
     public String getName(){return this.name;}
 
+    /**
+     * Returns the gene's cytogenic location.
+     * @return The gene cytogenic location.
+     */
     public GeneCytogenicLocation getCytogenicLocation() {
         return loc;
     }

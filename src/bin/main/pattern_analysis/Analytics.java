@@ -4,6 +4,11 @@ import bin.main.Gene_Main.Gene;
 
 import java.util.Arrays;
 
+/**
+ * Contains methods pertaining to gene analysis, such as gene sequencing algorithms.
+ *
+ * This includes the Needleman-Wunsch Algorithm, and its scoring methods.
+ */
 public class Analytics {
 
     //Default scoring algorithm
@@ -13,7 +18,11 @@ public class Analytics {
 
     private static String holder = "";
 
-
+    /**
+     * Calculates and determines the highest possible score of all possible sequence alignments.
+     * @param a Values used to determine scoring.
+     * @return The highest value of all alignments.
+     */
     public static int getHighestScore(int... a){
         int[] holder_array = a.clone();
         Arrays.sort(a);
@@ -35,6 +44,17 @@ public class Analytics {
         return a[a.length-1];
     }
 
+    /**
+     * Score algorithm determining calculations to find the highest alignment score possible.
+     * @param top_left The top-left value.
+     * @param above The above value.
+     * @param left The left value.
+     * @param g1 A gene to be aligned.
+     * @param g2 A gene to be aligned.
+     * @param column The current column to be checked.
+     * @param row The current row to be checked.
+     * @return The highest score possible with the given values.
+     */
     private static int score_Algorithm(int top_left, int above, int left, Gene g1, Gene g2, int column, int row) {
         int score;
 
@@ -49,7 +69,14 @@ public class Analytics {
         return getHighestScore(top_left + score, above + MISMATCH_OR_INDEL, left + MISMATCH_OR_INDEL);
     }
 
-
+    /**
+     * Implementation of the Needleman-Wunsch Algorithm.
+     *
+     * This algorithm is used primarily for gene sequencing looking for the optimal match between gene sequences.
+     * This creates both an alignment matrix and pointer matrix.
+     * @param g1 A gene to be aligned.
+     * @param g2 A gene to be aligned.
+     */
     static void N_W_Algorithm(Gene g1, Gene g2) {
         int columns = g1.size() + 1;
         int rows = g2.size() + 1;

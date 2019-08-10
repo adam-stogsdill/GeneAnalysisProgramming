@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Contains methods for loading the database of genome ranges.
+ */
 public class GenomeDatabaseMain {
 
     static HashMap<Integer, ArrayList<GenomeRanges>> ranges = new HashMap<>();
@@ -16,6 +19,10 @@ public class GenomeDatabaseMain {
     Obtaining information from
     https://www.ncbi.nlm.nih.gov/genome/gdv/browser/?context=genome&acc=GCF_000001405.39
     National Center for Biotechnology Information
+     */
+
+    /**
+     * Loads the database of genome ranges.
      */
     public static void LoadDatabase() {
         //TODO FIX LOADING
