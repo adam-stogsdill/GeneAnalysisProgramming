@@ -9,7 +9,7 @@ import java.io.IOException;
  */
 public class GeneFileReader {
     /**
-     * Reads the gene from a given file
+     * Reads the gene from a given file.
      * @param f The string of the file name.
      * @return A string of the gene sequence from the file.
      * @throws IOException Thrown if the file cannot be found or read.

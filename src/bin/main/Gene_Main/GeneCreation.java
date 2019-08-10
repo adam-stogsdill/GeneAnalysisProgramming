@@ -16,9 +16,9 @@ Thymine(T)
  */
 public class GeneCreation {
     /**
-     * Tests whether a sequence is a proper gene sequence.  If the gene sequence given is not a valid sequence, the program will output an INVALID_CHARACTER error.
+     * Tests whether a sequence is a proper gene sequence.  If the gene sequence given is not a valid sequence, the program will output an {@code INVALID_CHARACTER} error.
      * @param sequence The sequence to be tested.
-     * @throws GeneCreationError
+     * @throws GeneCreationError Throws an {@code INVALID_CHARACTER} error if there is an invalid character in the sequence.
      */
     public static void check_if_Possible(char[] sequence) throws GeneCreationError {
         for (int i = 0; i < sequence.length; i++) {

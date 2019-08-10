@@ -4,24 +4,37 @@ import bin.main.Gene_Main.Gene;
 
 import java.util.HashMap;
 
+/**
+ * Methods to analyze patterns within genes.
+ */
 public class PatternStatistics {
     private HashMap<String, Integer> set = new HashMap<>();
     private int restricted_genome_size;
 
+    /**
+     * Adds a gene with a given restricted genome size.
+     * @param size The restricted genome size.
+     * @param g1 The genome to be added.
+     */
     public PatternStatistics(int size, Gene... g1) {
         this.restricted_genome_size = size;
         this.constructHashMap(g1);
     }
 
+    /**
+     * Adds a gene without a restricted genome size.
+     * @param g1 The gene to be added.
+     */
     public PatternStatistics(Gene... g1) {
         this.restricted_genome_size = 0;
         this.constructHashMap(g1);
     }
 
     /**
-     * Construct Hash Map method is usually run when creating the Pattern_Statistics Object that creates a list of possible slices at a certain size
+     * Constructs a list of possible slices at a certain size and placed into a {@code HashMap}.
+     * Usually run when creating the {@code PatternStatistics} object.
      *
-     * @param gene_list List of genomes that will be added to the HashMap
+     * @param gene_list List of genomes that will be added to the {@code HashMap}.
      */
     private void constructHashMap(Gene... gene_list) {
         if (this.restricted_genome_size == 0)
@@ -37,6 +50,10 @@ public class PatternStatistics {
         }
     }
 
+    /**
+     * Analyzes a gene with unrestricted genome size.
+     * @param gene The gene to be analyzed.
+     */
     private void unrestrictedGenePatternLoop(Gene gene) {
         for (int j = 1; j < gene.size(); j++) {
             for (int i = 0; i <= gene.size() - j; i++) {
@@ -52,7 +69,7 @@ public class PatternStatistics {
 
     /**
      * Method that uses the restraints given by the program for creating slices of the information.
-     * @param gene
+     * @param gene The gene to be analyzed.
      */
     private void restrictedGenePatternLoop(Gene gene) {
         for (int i = 0; i <= gene.size() - this.restricted_genome_size; i++) {
@@ -67,6 +84,10 @@ public class PatternStatistics {
         }
     }
 
+    /**
+     * Adds a genome to the {@code HashMap}.
+     * @param g The gene to be added.
+     */
     public void addGenomeToSet(Gene g) {
         if (this.restricted_genome_size == 0)
             unrestrictedGenePatternLoop(g);
@@ -74,6 +95,10 @@ public class PatternStatistics {
             restrictedGenePatternLoop(g);
     }
 
+    /**
+     * Returns a string representation of the patterns built with genes.
+     * @return A pattern string.
+     */
     @Override
     public String toString() {
         System.out.println("\nBUILDING PATTERN STRING THAT CONTAINS RESTRICTED GENOME SIZE OF " + this.restricted_genome_size + "\n");

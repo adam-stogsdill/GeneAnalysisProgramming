@@ -7,7 +7,10 @@ import bin.main.ErrorManagement.GenomeError;
 import bin.main.GenomeDatabaseInformation.GenomeRanges;
 
 /**
- * Holds the cytogenic location of a gene on a chromosome.
+ * Implementation of the Cytogenic Location organization technique.
+ *
+ * This is a technique for finding where specific genes will be located by giving the chromosome, arm, region and band.
+ *
  */
 public class GeneCytogenicLocation {
     /*
@@ -23,7 +26,7 @@ public class GeneCytogenicLocation {
     private int stop;
 
     /**
-     * Creates a GeneCytogenicLocation without a specified sub-band.  The sub-band is defaulted to 0, marking it as non-important.
+     * Creates a {@code GeneCytogenicLocation} without a specified sub-band.  The sub-band is defaulted to 0.
      *
      * @param chromosome The chromosome where the gene is located.
      * @param arm The arm position of the gene.  'P' is the short arm and "Q' is the long arm.
@@ -45,12 +48,13 @@ public class GeneCytogenicLocation {
     }
 
     /**
-     * Creates a GeneCytogenicLocation with a specified sub-band.
+     * Creates a {@code GeneCytogenicLocation} with a specified sub-band.
      *
      * @param chromosome The chromosome where the gene is located.
      * @param arm The arm position of the gene.  'P' is the short arm and "Q' is the long arm.
      * @param region The region of the gene.
      * @param band The band of the gene.
+     * @param sub_band The sub-band of the gene.
      * @param start The start range of the gene.
      * @param stop The stop range of the gene.
      * @throws GeneCreationError The gene could not be properly created.
@@ -68,7 +72,7 @@ public class GeneCytogenicLocation {
     }
 
     /**
-     * Stores the specific location of the gene, and its information
+     * Stores the specific location of the gene, and its information.
      * @param chromosome The chromosome where the gene is located.
      * @param arm The arm position of the gene.  'P' is the short arm and "Q' is the long arm.
      * @param region The region of the gene.

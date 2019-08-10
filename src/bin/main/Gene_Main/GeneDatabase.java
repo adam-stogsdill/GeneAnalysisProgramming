@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 /**
- * Management of the gene database to be used by the application.  Contains a HashMap which is eventually loaded with non-mutated genes.
+ * Management of the gene database to be used by the application.  Contains a {@code HashMap} which is eventually loaded with all database information, organized by chromosome #.
  */
 public class GeneDatabase {
 
@@ -18,7 +18,7 @@ public class GeneDatabase {
     public static HashMap<Integer, ArrayList<Gene>> nonMutatedGenome = new HashMap<>();
 
     /**
-     * Loads the gene database into a HashMap.  This must be called before starting gene analysis.
+     * Loads the gene database into a {@code HashMap}.  This must be called before starting gene analysis.
      * @throws IOException The file could not be found or loaded properly.
      * @throws GeneCreationError The gene could not be properly created.
      */
@@ -42,7 +42,7 @@ public class GeneDatabase {
     }
 
     /**
-     * Outputs the HashMap of the non-mutated genes into the console.
+     * Outputs the {@code HashMap} of the non-mutated genes into the console.
      */
     public static void printDatabase(){
         Integer[] list = nonMutatedGenome.keySet().toArray(new Integer[nonMutatedGenome.keySet().size()]);

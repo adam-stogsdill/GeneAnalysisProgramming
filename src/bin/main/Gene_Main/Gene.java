@@ -96,7 +96,7 @@ public class Gene {
     /**
      * Simply returns the gene's pairs inside of a String to be printed if chosen.
      *
-     * @return Char[] into String
+     * @return Converted char[] to String.
      */
     @Override
     public String toString() {
@@ -110,14 +110,22 @@ public class Gene {
 
     /**
      * This returns the char array containing each individual pair inside of it.
-     * @return Returns the gene information
+     * @return The gene information.
      */
     public char[] getGene_information() {
         return gene_information;
     }
 
+    /**
+     * This returns the name of the gene.
+     * @return The name of the gene.
+     */
     public String getName(){return this.name;}
 
+    /**
+     * Returns the gene's cytogenic location.
+     * @return The gene cytogenic location.
+     */
     public GeneCytogenicLocation getCytogenicLocation() {
         return loc;
     }
