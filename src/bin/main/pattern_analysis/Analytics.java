@@ -1,8 +1,11 @@
 package bin.main.pattern_analysis;
 
 import bin.main.Gene_Main.Gene;
+import bin.main.Gene_Main.GeneDatabase;
+import bin.main.Patient_Information.Patient;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class Analytics {
 
@@ -92,6 +95,48 @@ public class Analytics {
             System.out.println();
         }
 
+    }
+
+    //TODO Mutations Method needs to specify whether if has a point mutation or not. POINT MUTATIONS ARE WHAT WE CAN USE TO
+    //IDENTIFY DELETION USING DELETION MAPPING
+
+    public void Mutations(Patient p, Integer pair_set){
+
+        if(pair_set == 1) {
+            for (Integer observing_chromosome : p.getPatient_data().getChromosome_information().getP1().keySet()) {
+                System.out.println("Observing: " + observing_chromosome + " chromosome");
+                for (Gene non_mutated_gene : GeneDatabase.nonMutatedGenome.get(observing_chromosome)) {
+                    location_algorithm(observing_chromosome, non_mutated_gene, p.getPatient_data().getChromosome_information().getP1(), p);
+                }
+            }
+        }else{
+            for (Integer observing_chromosome : p.getPatient_data().getChromosome_information().getP2().keySet()) {
+                System.out.println("Observing: " + observing_chromosome + " chromosome");
+                for (Gene non_mutated_gene : GeneDatabase.nonMutatedGenome.get(observing_chromosome)) {
+                    location_algorithm(observing_chromosome, non_mutated_gene, p.getPatient_data().getChromosome_information().getP2(), p);
+                }
+            }
+        }
+
+    }
+
+    private void location_algorithm(Integer observing_chromosome, Gene non_mutated_gene, HashMap<Integer, Gene> p2, Patient p) {
+        int start = non_mutated_gene.getCytogenicLocation().getStart() - 1;
+        int stop = non_mutated_gene.getCytogenicLocation().getStop() - 1;
+        char[] gene_info = Arrays.copyOfRange(p2.get(observing_chromosome).getGene_information(), start, stop);
+        if (!Arrays.equals(non_mutated_gene.getGene_information(), gene_info)) {
+            System.out.println("Mutation Located at (" + non_mutated_gene.getCytogenicLocation().toString() + ") which is the (" + non_mutated_gene.getName() + ") gene.");
+        }
+    }
+
+    public String recomendation_of_Testing(Patient p){
+        for(Integer i: p.getPatient_data().getChromosome_information().getP1().keySet()) {
+            if (p.getPatient_data().getChromosome_information().getP1().get(i) != p.getPatient_data().getChromosome_information().getP2().get(i)){
+                System.out.println(p.getPatient_name() + ": has an irregularity on the chromosome " + i);
+            }
+        }
+
+        return "Likely no testing is required.";
     }
 
 }

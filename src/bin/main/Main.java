@@ -36,7 +36,7 @@ public class Main {
 
         //Analytics.N_W_Algorithm(new Gene("GATC"), new Gene("TTACT"));
 
-        j.setContentPane(new Window());
+        //j.setContentPane(new Window());
 
 
         try{

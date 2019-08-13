@@ -39,8 +39,9 @@ public class GeneDatabase {
         Arrays.sort(list);
         for(Integer s: list){
             for(Gene g: nonMutatedGenome.get(s)){
-                //This print statment nullifys the printing of the actual Gene for cleaner terminal output
+                //This print statement nullifies the printing of the actual Gene for cleaner terminal output
                 System.out.printf("Gene_Name:%s\t%s\tRange: %s\n", g.getName(),g.getCytogenicLocation().toString(), g.getCytogenicLocation().getRange());
+                //Uncomment the following line and comment out the above line to have the gene information printed along-side the gene loading process
                 //System.out.printf("Gene_Name:%s\t%s\tRange: %s\n\t%s\n", g.getName(),g.getCytogenicLocation().toString(), g.getCytogenicLocation().getRange(), g);
             }
         }

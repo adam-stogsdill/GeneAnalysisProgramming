@@ -2,6 +2,7 @@ package bin.main.Gene_Main;
 import bin.main.ErrorManagement.GENEERROR;
 import bin.main.ErrorManagement.GeneCreationError;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
 /*
