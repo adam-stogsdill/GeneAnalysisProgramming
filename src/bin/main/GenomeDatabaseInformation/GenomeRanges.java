@@ -3,7 +3,9 @@ package bin.main.GenomeDatabaseInformation;
 import bin.main.ErrorManagement.GenomeDatabaseError;
 import bin.main.ErrorManagement.GenomeError;
 
-
+/**
+ * Methods for working with genome ranges.
+ */
 public class GenomeRanges {
 
     private int chromosome;

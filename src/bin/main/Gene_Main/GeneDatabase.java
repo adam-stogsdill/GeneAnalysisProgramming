@@ -9,11 +9,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+/**
+ * Management of the gene database to be used by the application.  Contains a {@code HashMap} which is eventually loaded with all database information, organized by chromosome #.
+ */
 public class GeneDatabase {
 
     //This is the data structure that stores all of the database information. It is organized by Chromosome #.
     public static HashMap<Integer, ArrayList<Gene>> nonMutatedGenome = new HashMap<>();
 
+    /**
+     * Loads the gene database into a {@code HashMap}.  This must be called before starting gene analysis.
+     * @throws IOException The file could not be found or loaded properly.
+     * @throws GeneCreationError The gene could not be properly created.
+     */
     public static void LoadDatabase() throws IOException, GeneCreationError {
         File[] files = new File("resources/GeneDatabaseInformation").listFiles();
         assert files != null;
@@ -33,7 +41,9 @@ public class GeneDatabase {
         }
     }
 
-
+    /**
+     * Outputs the {@code HashMap} of the non-mutated genes into the console.
+     */
     public static void printDatabase(){
         Integer[] list = nonMutatedGenome.keySet().toArray(new Integer[nonMutatedGenome.keySet().size()]);
         Arrays.sort(list);

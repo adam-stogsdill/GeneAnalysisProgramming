@@ -1,5 +1,6 @@
 package bin.main.ErrorManagement;
 
+
 public class GenomeDatabaseError extends Exception {
 
     private GenomeError error;
