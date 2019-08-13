@@ -3,6 +3,7 @@ package bin.main.pattern_analysis;
 import bin.main.Gene_Main.Gene;
 import bin.main.Gene_Main.GeneDatabase;
 import bin.main.Patient_Information.Patient;
+import bin.main.categorization.TestingCategory;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -156,14 +157,18 @@ public class Analytics {
         }
     }
 
-    public String recomendation_of_Testing(Patient p){
+    //private
+
+    public TestingCategory recomendation_of_Testing(Patient p){
         for(Integer i: p.getPatient_data().getChromosome_information().getP1().keySet()) {
             if (p.getPatient_data().getChromosome_information().getP1().get(i) != p.getPatient_data().getChromosome_information().getP2().get(i)){
                 System.out.println(p.getPatient_name() + ": has an irregularity on the chromosome " + i);
+                return TestingCategory.IRREGULARITY;
             }
         }
 
-        return "Likely no testing is required.";
+        System.out.print("No test is likely needed");
+        return TestingCategory.NULL;
     }
 
 }

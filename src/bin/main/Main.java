@@ -49,7 +49,7 @@ public class Main {
 
         ChromosomeData t_data = new ChromosomeData(2, GeneCreation.randomGene(215138626 + 215138626));
         Patient Tolmain = new Patient("Tolmain", t_data);
-        Tolmain.Mutations();
+        //Tolmain.Mutations();
 
         //PatternStatistics unrestricted_size = new PatternStatistics(g1);
         //System.out.println(unrestricted_size.toString());

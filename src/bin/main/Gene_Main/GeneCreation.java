@@ -23,7 +23,7 @@ public class GeneCreation {
      */
     public static void check_if_Possible(char[] sequence) throws GeneCreationError {
         for (int i = 0; i < sequence.length; i++) {
-            if (sequence[i] != 'A' && sequence[i] != 'G' && sequence[i] != 'C' && sequence[i] != 'T') {
+            if (sequence[i] != 'A' && sequence[i] != 'G' && sequence[i] != 'C' && sequence[i] != 'T' && sequence[i] != '_') {
                 System.out.println("This sequence is invalid at index " + i);
                 System.out.println(sequence[i] + " is not a valid character");
                 throw new GeneCreationError(GENEERROR.INVALID_CHARACTER);
