@@ -3,13 +3,17 @@ package bin.main;
 import bin.main.ErrorManagement.GeneCreationError;
 import bin.main.GUI.Window;
 import bin.main.Gene_Main.ChromosomeData;
+import bin.main.Gene_Main.Gene;
 import bin.main.Gene_Main.GeneCreation;
 import bin.main.Gene_Main.GeneDatabase;
 import bin.main.Patient_Information.Patient;
+import bin.main.pattern_analysis.Analytics;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 public class Main {
 
@@ -49,7 +53,8 @@ public class Main {
 
         ChromosomeData t_data = new ChromosomeData(2, GeneCreation.randomGene(215138626 + 215138626));
         Patient Tolmain = new Patient("Tolmain", t_data);
-        //Tolmain.Mutations();
+        Analytics.Mutations(Tolmain, 1);
+
 
         //PatternStatistics unrestricted_size = new PatternStatistics(g1);
         //System.out.println(unrestricted_size.toString());

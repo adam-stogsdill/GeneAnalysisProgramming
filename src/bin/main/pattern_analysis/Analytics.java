@@ -27,7 +27,7 @@ public class Analytics {
      * @param a Values used to determine scoring.
      * @return The highest value of all alignments.
      */
-    public static int getHighestScore(int... a){
+    private static int getHighestScore(int... a){
         int[] holder_array = a.clone();
         Arrays.sort(a);
         for(int i = 0; i < holder_array.length; i++){
@@ -81,7 +81,7 @@ public class Analytics {
      * @param g1 A gene to be aligned.
      * @param g2 A gene to be aligned.
      */
-    static void N_W_Algorithm(Gene g1, Gene g2) {
+    public static void N_W_Algorithm(Gene g1, Gene g2) {
         int columns = g1.size() + 1;
         int rows = g2.size() + 1;
 
@@ -128,7 +128,7 @@ public class Analytics {
     //TODO Mutations Method needs to specify whether if has a point mutation or not. POINT MUTATIONS ARE WHAT WE CAN USE TO
     //IDENTIFY DELETION USING DELETION MAPPING
 
-    public void Mutations(Patient p, Integer pair_set){
+    public static void Mutations(Patient p, Integer pair_set){
 
         if(pair_set == 1) {
             for (Integer observing_chromosome : p.getPatient_data().getChromosome_information().getP1().keySet()) {
@@ -148,7 +148,7 @@ public class Analytics {
 
     }
 
-    private void location_algorithm(Integer observing_chromosome, Gene non_mutated_gene, HashMap<Integer, Gene> p2, Patient p) {
+    private static void location_algorithm(Integer observing_chromosome, Gene non_mutated_gene, HashMap<Integer, Gene> p2, Patient p) {
         int start = non_mutated_gene.getCytogenicLocation().getStart() - 1;
         int stop = non_mutated_gene.getCytogenicLocation().getStop() - 1;
         char[] gene_info = Arrays.copyOfRange(p2.get(observing_chromosome).getGene_information(), start, stop);

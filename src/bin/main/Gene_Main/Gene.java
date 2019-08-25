@@ -42,6 +42,10 @@ public class Gene {
         this.gene_information = sequence.toCharArray();
     }
 
+    public Gene(char[] a){
+        this.gene_information = a;
+    }
+
     /**
      * Creates a Gene given only the gene sequence.
      * @param sequence The sequence of the gene.
