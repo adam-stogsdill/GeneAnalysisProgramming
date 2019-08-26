@@ -14,12 +14,26 @@ This program will implement the Cytogenic Location organization technique which 
 
 ### CTFR (cystic fibrosis transmembrane conductance regulator)
 
-FIRST GENE USABLE IN PROGRAM. Located at 7q31.2. https://ghr.nlm.nih.gov/gene/CFTR#location
+FIRST GENE USABLE IN PROGRAM. Located at 7q31.2. https://ghr.nlm.nih.gov/gene/CFTR
 
 ### AAAS(aladin WD repeat nucleoporin)
 
-Located at 12q13.13. https://ghr.nlm.nih.gov/gene/AAAS#
+Located at 12q13.13. https://ghr.nlm.nih.gov/gene/AAAS
 
 ### ABAT(4-aminobutyrate aminotransferase)
 
-Located at 16p13.2. https://ghr.nlm.nih.gov/gene/ABAT#location
+Located at 16p13.2. https://ghr.nlm.nih.gov/gene/ABAT
+
+### ABCA1 (ATP binding cassette subfamily A member 1)
+
+Located at 9q31.1. https://ghr.nlm.nih.gov/gene/ABCA1
+
+### ABCA12 (ATP binding cassette subfamily A member 12)
+
+Located at 2q35. https://ghr.nlm.nih.gov/gene/ABCA12
+
+### ABCA3 (ATP binding cassette subfamily A member 3)
+
+Located at 16p13.3. https://ghr.nlm.nih.gov/gene/ABCA3
+
+
