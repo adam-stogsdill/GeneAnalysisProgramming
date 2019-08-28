@@ -1,8 +1,7 @@
 package bin.main.Gene_Main;
-import bin.main.ErrorManagement.GENEERROR;
+import bin.main.ErrorManagement.GeneErrorType;
 import bin.main.ErrorManagement.GeneCreationError;
 
-import java.text.DecimalFormat;
 import java.util.Random;
 
 /*
@@ -26,7 +25,7 @@ public class GeneCreation {
             if (sequence[i] != 'A' && sequence[i] != 'G' && sequence[i] != 'C' && sequence[i] != 'T' && sequence[i] != '_') {
                 System.out.println("This sequence is invalid at index " + i);
                 System.out.println(sequence[i] + " is not a valid character");
-                throw new GeneCreationError(GENEERROR.INVALID_CHARACTER);
+                throw new GeneCreationError(GeneErrorType.INVALID_CHARACTER);
             }
         }
     }

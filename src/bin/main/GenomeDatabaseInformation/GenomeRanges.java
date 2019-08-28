@@ -1,7 +1,7 @@
 package bin.main.GenomeDatabaseInformation;
 
 import bin.main.ErrorManagement.GenomeDatabaseError;
-import bin.main.ErrorManagement.GenomeError;
+import bin.main.ErrorManagement.GenomeErrorType;
 
 /**
  * Methods for working with genome ranges.
@@ -34,11 +34,11 @@ public class GenomeRanges {
      */
     public GenomeRanges(int chromosome, char arm, int region, int band, int sub_band, int lowerBound, int upperBound) throws GenomeDatabaseError {
         if (chromosome < 1 || chromosome > 23)
-            throw new GenomeDatabaseError(GenomeError.INVALID_CHROMOSOME_NUMBER);
+            throw new GenomeDatabaseError(GenomeErrorType.INVALID_CHROMOSOME_NUMBER);
         if (arm != 'p' && arm != 'q')
-            throw new GenomeDatabaseError(GenomeError.INVALID_ARM_CHARACTER);
+            throw new GenomeDatabaseError(GenomeErrorType.INVALID_ARM_CHARACTER);
         if (!singleDigit(region) || !singleDigit(band) || !singleDigit(sub_band))
-            throw new GenomeDatabaseError(GenomeError.INVALID_NUMBER_LENGTH);
+            throw new GenomeDatabaseError(GenomeErrorType.INVALID_NUMBER_LENGTH);
 
         this.chromosome = chromosome;
         this.arm = arm;
