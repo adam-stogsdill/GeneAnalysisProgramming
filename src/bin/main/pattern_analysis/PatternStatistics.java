@@ -43,10 +43,7 @@ public class PatternStatistics {
             System.out.println("BUILDING PATTERN SET THAT CONTAINS RESTRICTED GENOME SIZE OF " + this.restricted_genome_size + "\n");
 
         for (Gene gene : gene_list) {
-            if (this.restricted_genome_size == 0)
-                unrestrictedGenePatternLoop(gene);
-            else
-                restrictedGenePatternLoop(gene);
+            redirect_gene(gene);
         }
     }
 
@@ -88,7 +85,7 @@ public class PatternStatistics {
      * Adds a genome to the {@code HashMap}.
      * @param g The gene to be added.
      */
-    public void addGenomeToSet(Gene g) {
+    private void redirect_gene(Gene g) {
         if (this.restricted_genome_size == 0)
             unrestrictedGenePatternLoop(g);
         else

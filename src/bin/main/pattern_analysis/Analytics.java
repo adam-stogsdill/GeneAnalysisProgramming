@@ -157,8 +157,13 @@ public class Analytics {
         }
     }
 
-    //private
 
+    /**
+     * Based off of the information from the Mutations in the Patient we will try to recommend physical testing
+     * for better diagnosis of the gene.
+     * @param p This is the Patient who you would like to get the recommendation of testing for
+     * @return Returns the Testing Category
+     */
     public TestingCategory recomendation_of_Testing(Patient p){
         for(Integer i: p.getPatient_data().getChromosome_information().getP1().keySet()) {
             if (p.getPatient_data().getChromosome_information().getP1().get(i) != p.getPatient_data().getChromosome_information().getP2().get(i)){
