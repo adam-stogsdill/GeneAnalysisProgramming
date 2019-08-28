@@ -16,9 +16,9 @@ import java.util.HashMap;
 public class Analytics {
 
     //Default scoring algorithm
-    private final static int MATCH = 1;                   //Score given to the alignment matrix when the gene name matches
-    private final static int MISMATCH_OR_INDEL = -1;      //Score given to the alignment matrix when the gene name mismatches
-                                            //Score given to the alignment matrix when the gene name is the same from that movement
+    private final static int MATCH = 1;                   // Score given to the alignment matrix when the gene name matches
+    private final static int MISMATCH_OR_INDEL = -1;      // Score given to the alignment matrix when the gene name mismatches
+                                                          // Score given to the alignment matrix when the gene name is the same from that movement
 
     private static String holder = "";
 
@@ -149,11 +149,12 @@ public class Analytics {
     }
 
     private static void location_algorithm(Integer observing_chromosome, Gene non_mutated_gene, HashMap<Integer, Gene> p2, Patient p) {
+        // Parameters are offset by one because the FASTA file information is based off the normal counting system
         int start = non_mutated_gene.getCytogenicLocation().getStart() - 1;
         int stop = non_mutated_gene.getCytogenicLocation().getStop() - 1;
         char[] gene_info = Arrays.copyOfRange(p2.get(observing_chromosome).getGene_information(), start, stop);
         if (!Arrays.equals(non_mutated_gene.getGene_information(), gene_info)) {
-            System.out.println("Mutation Located at (" + non_mutated_gene.getCytogenicLocation().toString() + ") which is the (" + non_mutated_gene.getName() + ") gene.");
+            System.out.println("Mutation Located at {" + non_mutated_gene.getCytogenicLocation().toString() + "} which is the {" + non_mutated_gene.getName() + "} gene.");
         }
     }
 

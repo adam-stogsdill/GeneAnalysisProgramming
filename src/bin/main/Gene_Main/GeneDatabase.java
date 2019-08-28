@@ -1,6 +1,6 @@
 package bin.main.Gene_Main;
 
-import bin.main.ErrorManagement.GENEERROR;
+import bin.main.ErrorManagement.GeneErrorType;
 import bin.main.ErrorManagement.GeneCreationError;
 
 import java.io.File;
@@ -28,7 +28,7 @@ public class GeneDatabase {
         for(File f: files){
             if (f.isFile()){
                 if(!f.getName().substring(f.getName().indexOf(".")).equals(".fasta"))
-                    throw new GeneCreationError(GENEERROR.INVALID_FILE_FORMAT);
+                    throw new GeneCreationError(GeneErrorType.INVALID_FILE_FORMAT);
                 //System.out.printf("%s\n", f.getName());
                 String gene_name = f.getName().substring(0,f.getName().indexOf("."));
                 Gene input = new Gene(GeneFileReader.getInformation(f.getPath()), gene_name);
