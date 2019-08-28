@@ -109,4 +109,7 @@ public class PatternStatistics {
         return s.toString();
     }
 
+    public HashMap get_set(){
+        return this.set;
+    }
 }

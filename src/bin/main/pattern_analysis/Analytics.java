@@ -27,7 +27,7 @@ public class Analytics {
      * @param a Values used to determine scoring.
      * @return The highest value of all alignments.
      */
-    private static int getHighestScore(int... a){
+    private static int get_highest_score(int... a){
         int[] holder_array = a.clone();
         Arrays.sort(a);
         for(int i = 0; i < holder_array.length; i++){
@@ -62,15 +62,15 @@ public class Analytics {
     private static int score_Algorithm(int top_left, int above, int left, Gene g1, Gene g2, int column, int row) {
         int score;
 
-        if (g1.getGene_information()[column-1] == g2.getGene_information()[row-1]) {
+        if (g1.get_gene_information()[column-1] == g2.get_gene_information()[row-1]) {
             score = MATCH;
         }else
             score = MISMATCH_OR_INDEL;
 
-        System.out.println("Column: " + g1.getGene_information()[column - 1] + " Row: " + g2.getGene_information()[row - 1] + " Index: " + (row-1) + "," + (column-1));
+        System.out.println("Column: " + g1.get_gene_information()[column - 1] + " Row: " + g2.get_gene_information()[row - 1] + " Index: " + (row-1) + "," + (column-1));
         System.out.println("Row: " + row + " Column: " + column + " "  + (top_left + score) + " " + (above + MISMATCH_OR_INDEL) + " " + (left + MISMATCH_OR_INDEL) + "\n");
 
-        return getHighestScore(top_left + score, above + MISMATCH_OR_INDEL, left + MISMATCH_OR_INDEL);
+        return get_highest_score(top_left + score, above + MISMATCH_OR_INDEL, left + MISMATCH_OR_INDEL);
     }
 
     /**
@@ -128,7 +128,7 @@ public class Analytics {
     //TODO Mutations Method needs to specify whether if has a point mutation or not. POINT MUTATIONS ARE WHAT WE CAN USE TO
     //IDENTIFY DELETION USING DELETION MAPPING
 
-    public static void Mutations(Patient p, Integer pair_set){
+    public static void find_mutations(Patient p, Integer pair_set){
 
         if(pair_set == 1) {
             for (Integer observing_chromosome : p.getPatient_data().getChromosome_information().getP1().keySet()) {
@@ -151,15 +151,15 @@ public class Analytics {
     private static void location_algorithm(Integer observing_chromosome, Gene non_mutated_gene, HashMap<Integer, Gene> p2, Patient p) {
         int start = non_mutated_gene.getCytogenicLocation().getStart() - 1;
         int stop = non_mutated_gene.getCytogenicLocation().getStop() - 1;
-        char[] gene_info = Arrays.copyOfRange(p2.get(observing_chromosome).getGene_information(), start, stop);
-        if (!Arrays.equals(non_mutated_gene.getGene_information(), gene_info)) {
-            System.out.println("Mutation Located at (" + non_mutated_gene.getCytogenicLocation().toString() + ") which is the (" + non_mutated_gene.getName() + ") gene.");
+        char[] gene_info = Arrays.copyOfRange(p2.get(observing_chromosome).get_gene_information(), start, stop);
+        if (!Arrays.equals(non_mutated_gene.get_gene_information(), gene_info)) {
+            System.out.println("Mutation Located at (" + non_mutated_gene.getCytogenicLocation().toString() + ") which is the (" + non_mutated_gene.get_name() + ") gene.");
         }
     }
 
     //private
 
-    public TestingCategory recomendation_of_Testing(Patient p){
+    public TestingCategory recomendation_of_testing(Patient p){
         for(Integer i: p.getPatient_data().getChromosome_information().getP1().keySet()) {
             if (p.getPatient_data().getChromosome_information().getP1().get(i) != p.getPatient_data().getChromosome_information().getP2().get(i)){
                 System.out.println(p.getPatient_name() + ": has an irregularity on the chromosome " + i);
@@ -170,5 +170,7 @@ public class Analytics {
         System.out.print("No test is likely needed");
         return TestingCategory.NULL;
     }
+
+
 
 }

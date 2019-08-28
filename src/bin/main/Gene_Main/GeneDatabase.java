@@ -22,7 +22,7 @@ public class GeneDatabase {
      * @throws IOException The file could not be found or loaded properly.
      * @throws GeneCreationError The gene could not be properly created.
      */
-    public static void LoadDatabase() throws IOException, GeneCreationError {
+    public static void load_database() throws IOException, GeneCreationError {
         File[] files = new File("resources/GeneDatabaseInformation").listFiles();
         assert files != null;
         for(File f: files){
@@ -44,13 +44,13 @@ public class GeneDatabase {
     /**
      * Outputs the {@code HashMap} of the non-mutated genes into the console.
      */
-    public static void printDatabase(){
+    public static void print_database(){
         Integer[] list = nonMutatedGenome.keySet().toArray(new Integer[nonMutatedGenome.keySet().size()]);
         Arrays.sort(list);
         for(Integer s: list){
             for(Gene g: nonMutatedGenome.get(s)){
                 //This print statement nullifies the printing of the actual Gene for cleaner terminal output
-                System.out.printf("Gene_Name:%s\t%s\tRange: %s\n", g.getName(),g.getCytogenicLocation().toString(), g.getCytogenicLocation().getRange());
+                System.out.printf("Gene_Name:%s\t%s\tRange: %s\n", g.get_name(),g.getCytogenicLocation().toString(), g.getCytogenicLocation().getRange());
                 //Uncomment the following line and comment out the above line to have the gene information printed along-side the gene loading process
                 //System.out.printf("Gene_Name:%s\t%s\tRange: %s\n\t%s\n", g.getName(),g.getCytogenicLocation().toString(), g.getCytogenicLocation().getRange(), g);
             }

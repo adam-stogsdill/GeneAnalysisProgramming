@@ -36,7 +36,7 @@ public class GeneCreation {
      * @param size The number of pairs in the created gene.
      * @return A string containing the randomly generated gene.
      */
-    public static String randomGene(int size) {
+    public static String random_gene(int size) {
         System.out.println("Generating a random gene of " + size + " pairs!");
         Random random = new Random();
         char[] result = new char[size];

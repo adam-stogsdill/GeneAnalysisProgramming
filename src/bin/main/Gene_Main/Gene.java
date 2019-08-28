@@ -119,7 +119,7 @@ public class Gene {
      * This returns the char array containing each individual pair inside of it.
      * @return The gene information.
      */
-    public char[] getGene_information() {
+    public char[] get_gene_information() {
         return gene_information;
     }
 
@@ -127,7 +127,7 @@ public class Gene {
      * This returns the name of the gene.
      * @return The name of the gene.
      */
-    public String getName(){return this.name;}
+    public String get_name(){return this.name;}
 
     /**
      * Returns the gene's cytogenic location.

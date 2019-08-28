@@ -24,7 +24,7 @@ public class GenomeDatabaseMain {
     /**
      * Loads the database of genome ranges.
      */
-    public static void LoadDatabase() {
+    public static void load_database() {
         //TODO FIX LOADING
         try {
             BufferedReader bf = new BufferedReader(new FileReader("resources/GenomeRanges"));

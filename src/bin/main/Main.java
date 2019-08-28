@@ -1,19 +1,14 @@
 package bin.main;
 
 import bin.main.ErrorManagement.GeneCreationError;
-import bin.main.GUI.Window;
 import bin.main.Gene_Main.ChromosomeData;
-import bin.main.Gene_Main.Gene;
 import bin.main.Gene_Main.GeneCreation;
 import bin.main.Gene_Main.GeneDatabase;
 import bin.main.Patient_Information.Patient;
 import bin.main.pattern_analysis.Analytics;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.Arrays;
 
 public class Main {
 
@@ -44,16 +39,16 @@ public class Main {
 
 
         try{
-            GeneDatabase.LoadDatabase();
+            GeneDatabase.load_database();
         }catch(IOException | GeneCreationError e){
             e.printStackTrace();
         }
-        GeneDatabase.printDatabase();
+        GeneDatabase.print_database();
 
 
-        ChromosomeData t_data = new ChromosomeData(2, GeneCreation.randomGene(215138626 + 215138626));
+        ChromosomeData t_data = new ChromosomeData(2, GeneCreation.random_gene(215138626 + 215138626));
         Patient Tolmain = new Patient("Tolmain", t_data);
-        Analytics.Mutations(Tolmain, 1);
+        Analytics.find_mutations(Tolmain, 1);
 
 
         //PatternStatistics unrestricted_size = new PatternStatistics(g1);
