@@ -30,4 +30,9 @@ public class GeneCodeHandler {
         return result.toString();
     }
 
+    @Override
+    public String toString(){
+        return code_dictionary.toString();
+    }
+
 }
