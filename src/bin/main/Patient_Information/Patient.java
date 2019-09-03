@@ -16,10 +16,6 @@ public class Patient {
     }
 
 
-
-
-
-
     public String getPatient_name() {return this.patient_name;}
     public ChromosomeData getPatient_data(){return this.patient_data;}
 }
