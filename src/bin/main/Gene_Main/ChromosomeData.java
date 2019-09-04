@@ -7,8 +7,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class ChromosomeData {
-    private HashMap<Integer, Gene> chromosome_information_1;
-    private HashMap<Integer, Gene> chromosome_information_2;
+    private HashMap<Integer, Gene> chromosome_information;
 
     //How to organize Chromosome Data File
     /*
@@ -37,14 +36,20 @@ public class ChromosomeData {
      * @param sequence
      */
     public ChromosomeData(Integer chromosome, String sequence) {
-        this.chromosome_information_1 = new HashMap<>();
-        this.chromosome_information_1.put(chromosome, new Gene(sequence));
-        this.chromosome_information_2 = new HashMap<>();
-        this.chromosome_information_2.put(chromosome, new Gene(sequence));
+        this.chromosome_information = new HashMap<>();
+        this.chromosome_information.put(chromosome, new Gene(sequence));
 
     }
 
-    public Pair<HashMap<Integer, Gene>> getChromosome_information() {
-        return new Pair<HashMap<Integer, Gene>>(chromosome_information_1, chromosome_information_2);
+    public ChromosomeData(Gene... genes) {
+        this.chromosome_information = new HashMap<>();
+        for(Gene g: genes){
+            this.chromosome_information.put(g.getCytogenicLocation().getChromosome(), g);
+        }
+
+    }
+
+    public HashMap<Integer, Gene> getChromosome_information() {
+        return chromosome_information;
     }
 }

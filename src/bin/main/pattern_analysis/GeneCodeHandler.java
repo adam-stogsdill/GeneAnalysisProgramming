@@ -16,8 +16,8 @@ public class GeneCodeHandler {
     // Can be used for finding mutations
     public static String convert_gene_to_code(Gene input_gene){
         StringBuilder result = new StringBuilder();
-        for(int x = 0; x < input_gene.get_gene_information().length - 3; x+=3){
-            result.append(code_dictionary.get("" + input_gene.get_gene_information()[x] + input_gene.get_gene_information()[x + 1] + input_gene.get_gene_information()[x + 3]));
+        for(int x = 0; x < input_gene.get_DNA_information().length - 3; x+=3){
+            result.append(code_dictionary.get("" + input_gene.get_DNA_information()[x] + input_gene.get_DNA_information()[x + 1] + input_gene.get_DNA_information()[x + 3]));
         }
         return result.toString();
     }

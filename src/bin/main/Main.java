@@ -30,7 +30,7 @@ public class Main {
 
         ChromosomeData t_data = new ChromosomeData(2, GeneCreation.random_gene(215138626 + 215138626));
         Patient Tolmain = new Patient("Tolmain", t_data);
-        find_mutations(Tolmain, 1);
+        find_mutations(Tolmain);
 
 
         System.out.println(GeneDatabase.nonMutatedGenome.get(2).get(0).toString() + "\n" + GeneCodeHandler.convert_gene_to_code(GeneDatabase.nonMutatedGenome.get(2).get(0)));

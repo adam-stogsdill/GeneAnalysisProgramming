@@ -15,6 +15,11 @@ public class Patient {
         this.patient_data = patient_data;
     }
 
+    public Patient(String name, Gene ... genes) {
+        this.patient_name = name;
+        this.patient_data = new ChromosomeData(genes);
+    }
+
 
     public String getPatient_name() {return this.patient_name;}
     public ChromosomeData getPatient_data(){return this.patient_data;}

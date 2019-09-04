@@ -19,7 +19,8 @@ https://towardsdatascience.com/dna-sequence-data-analysis-starting-off-in-bioinf
  */
 public class Gene {
 
-    private char[] gene_information;
+    private char[] DNA_information;
+    private char[] mRNA_information;
     private GeneCytogenicLocation loc;
     private String name;
 
@@ -27,37 +28,37 @@ public class Gene {
      * Creates a Gene given only the gene sequence and the gene's cytogenic location.
      * To create a gene one must first feed the length of the gene sequence for further creation.
      *
-     * @param sequence This is simply a sequence that you already have to feed into the information
+     * @param DNA_sequence This is simply a sequence that you already have to feed into the information
      * @param loc This is the GeneCytogenicLocation of the sequence relative to a chromosome's information
      *
      */
-    public Gene(String sequence, GeneCytogenicLocation loc) {
+    public Gene(String DNA_sequence, GeneCytogenicLocation loc) {
         try {
-            GeneCreation.check_if_Possible(sequence.toCharArray());
+            GeneCreation.check_if_Possible(DNA_sequence.toCharArray());
         } catch (GeneCreationError e) {
             e.printStackTrace();
             return;
         }
         this.loc = loc;
-        this.gene_information = sequence.toCharArray();
+        this.DNA_information = DNA_sequence.toCharArray();
     }
 
     public Gene(char[] a){
-        this.gene_information = a;
+        this.DNA_information = a;
     }
 
     /**
      * Creates a Gene given only the gene sequence.
-     * @param sequence The sequence of the gene.
+     * @param DNA_sequence The sequence of the gene.
      */
-    public Gene(String sequence) {
+    public Gene(String DNA_sequence) {
         try {
-            GeneCreation.check_if_Possible(sequence.toCharArray());
+            GeneCreation.check_if_Possible(DNA_sequence.toCharArray());
         } catch (GeneCreationError e) {
             e.printStackTrace();
             return;
         }
-        this.gene_information = sequence.toCharArray();
+        this.DNA_information = DNA_sequence.toCharArray();
     }
 
     /**
@@ -86,7 +87,7 @@ public class Gene {
         }catch (GenomeDatabaseError e){
             e.printStackTrace();
         }
-        this.gene_information = parsed_sequence[7].toCharArray();
+        this.DNA_information = parsed_sequence[7].toCharArray();
     }
 
 
@@ -96,7 +97,7 @@ public class Gene {
      * @return Number of pairs in gene.
      */
     public int size() {
-        return this.gene_information.length;
+        return this.DNA_information.length;
     }
 
 
@@ -108,7 +109,7 @@ public class Gene {
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
-        for (char c : this.gene_information) {
+        for (char c : this.DNA_information) {
             str.append(c);
         }
         return str.toString();
@@ -119,8 +120,8 @@ public class Gene {
      * This returns the char array containing each individual pair inside of it.
      * @return The gene information.
      */
-    public char[] get_gene_information() {
-        return gene_information;
+    public char[] get_DNA_information() {
+        return DNA_information;
     }
 
     /**
