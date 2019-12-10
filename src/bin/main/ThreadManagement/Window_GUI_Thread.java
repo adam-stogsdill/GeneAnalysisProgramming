@@ -14,6 +14,6 @@ public class Window_GUI_Thread extends TimerTask {
     }
 
     public void run() {
-        window.repaint();
+        //window.repaint();
     }
 }

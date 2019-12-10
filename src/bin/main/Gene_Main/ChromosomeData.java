@@ -9,7 +9,6 @@ import java.util.HashMap;
 public class ChromosomeData {
     private HashMap<Integer, Gene> chromosome_information;
 
-
     //How to organize Chromosome Data File
     /*
     First part of the line is the chromosome that we are operating on
@@ -31,9 +30,23 @@ public class ChromosomeData {
         }
     }
 
+    /**
+     *
+     * @param chromosome
+     * @param sequence
+     */
     public ChromosomeData(Integer chromosome, String sequence) {
         this.chromosome_information = new HashMap<>();
         this.chromosome_information.put(chromosome, new Gene(sequence));
+
+    }
+
+    public ChromosomeData(Gene... genes) {
+        this.chromosome_information = new HashMap<>();
+        for(Gene g: genes){
+            this.chromosome_information.put(g.getCytogenicLocation().getChromosome(), g);
+        }
+
     }
 
     public HashMap<Integer, Gene> getChromosome_information() {

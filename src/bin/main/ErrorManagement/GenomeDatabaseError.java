@@ -1,10 +1,11 @@
 package bin.main.ErrorManagement;
 
+
 public class GenomeDatabaseError extends Exception {
 
-    private GenomeError error;
+    private GenomeErrorType error;
 
-    public GenomeDatabaseError(GenomeError error) {
+    public GenomeDatabaseError(GenomeErrorType error) {
         this.error = error;
     }
 

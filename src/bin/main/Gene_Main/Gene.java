@@ -13,38 +13,60 @@ Thymine(T)
 Reference Material
 https://towardsdatascience.com/dna-sequence-data-analysis-starting-off-in-bioinformatics-3dba4cea04f
  */
+
+/**
+ * Contains the sequence, location, and name of a specific gene.
+ */
 public class Gene {
 
-    private char[] gene_information;
+    private char[] DNA_information;
+    private char[] mRNA_information;
     private GeneCytogenicLocation loc;
     private String name;
 
     /**
-     * To create a gene one must first feed the length of the gene sequence for further creation
+     * Creates a Gene given only the gene sequence and the gene's cytogenic location.
+     * To create a gene one must first feed the length of the gene sequence for further creation.
      *
-     * @param sequence This is simply a sequence that you already have to feed into the information
+     * @param DNA_sequence This is simply a sequence that you already have to feed into the information
+     * @param loc This is the GeneCytogenicLocation of the sequence relative to a chromosome's information
+     *
      */
-    public Gene(String sequence, GeneCytogenicLocation loc) {
+    public Gene(String DNA_sequence, GeneCytogenicLocation loc) {
         try {
-            GeneCreation.check_if_Possible(sequence.toCharArray());
+            GeneCreation.check_if_Possible(DNA_sequence.toCharArray());
         } catch (GeneCreationError e) {
             e.printStackTrace();
             return;
         }
         this.loc = loc;
-        this.gene_information = sequence.toCharArray();
+        this.DNA_information = DNA_sequence.toCharArray();
     }
 
-    public Gene(String sequence) {
+    public Gene(char[] a){
+        this.DNA_information = a;
+    }
+
+    /**
+     * Creates a Gene given only the gene sequence.
+     * @param DNA_sequence The sequence of the gene.
+     */
+    public Gene(String DNA_sequence) {
         try {
-            GeneCreation.check_if_Possible(sequence.toCharArray());
+            GeneCreation.check_if_Possible(DNA_sequence.toCharArray());
         } catch (GeneCreationError e) {
             e.printStackTrace();
             return;
         }
-        this.gene_information = sequence.toCharArray();
+        this.DNA_information = DNA_sequence.toCharArray();
     }
 
+    /**
+     * Allows the program to make a Gene with a name. Primarily used for the Gene Database for the user to pursue more information
+     * about the gene and its possible mutation effects.
+     * @param sequence The specified sequence of the Gene with a String that will later be parsed into a char[]
+     * @param name The name of the gene.
+     */
     public Gene(String sequence, String name) {
         String[] parsed_sequence = sequence.split(",");
         this.name = name;
@@ -55,38 +77,39 @@ public class Gene {
             return;
         }
         try {
-            this.loc = new GeneCytogenicLocation(Integer.valueOf(parsed_sequence[0]), parsed_sequence[1].charAt(0),
-                    Integer.valueOf(parsed_sequence[2]), Integer.valueOf(parsed_sequence[3]), Integer.valueOf(parsed_sequence[4]),
-                    Integer.valueOf(parsed_sequence[5]), Integer.valueOf(parsed_sequence[6]));
+            this.loc = new GeneCytogenicLocation(Integer.parseInt(parsed_sequence[0]), parsed_sequence[1].charAt(0),
+                    Integer.parseInt(parsed_sequence[2]), Integer.parseInt(parsed_sequence[3]), Integer.parseInt(parsed_sequence[4]),
+                    Integer.parseInt(parsed_sequence[5]), Integer.parseInt(parsed_sequence[6]));
+
             //System.out.println(this.loc);
         }catch(GeneCreationError e){
             e.printStackTrace();
         }catch (GenomeDatabaseError e){
             e.printStackTrace();
         }
-        this.gene_information = parsed_sequence[7].toCharArray();
+        this.DNA_information = parsed_sequence[7].toCharArray();
     }
 
 
     /**
-     * Returns the number of pairs inside of the gene.
+     * Returns the number of pairs inside of the gene. (Size of the gene_information char[])
      *
      * @return Number of pairs in gene.
      */
     public int size() {
-        return this.gene_information.length;
+        return this.DNA_information.length;
     }
 
 
     /**
      * Simply returns the gene's pairs inside of a String to be printed if chosen.
      *
-     * @return Char[] into String
+     * @return Converted char[] to String.
      */
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
-        for (char c : this.gene_information) {
+        for (char c : this.DNA_information) {
             str.append(c);
         }
         return str.toString();
@@ -95,14 +118,22 @@ public class Gene {
 
     /**
      * This returns the char array containing each individual pair inside of it.
-     * @return Returns the gene information
+     * @return The gene information.
      */
-    public char[] getGene_information() {
-        return gene_information;
+    public char[] get_DNA_information() {
+        return DNA_information;
     }
 
-    public String getName(){return this.name;}
+    /**
+     * This returns the name of the gene.
+     * @return The name of the gene.
+     */
+    public String get_name(){return this.name;}
 
+    /**
+     * Returns the gene's cytogenic location.
+     * @return The gene cytogenic location.
+     */
     public GeneCytogenicLocation getCytogenicLocation() {
         return loc;
     }

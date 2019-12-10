@@ -3,9 +3,9 @@ package bin.main.ErrorManagement;
 public class GeneCreationError extends Exception {
 
     private int error_id = -1;
-    private GENEERROR error;
+    private GeneErrorType error;
 
-    public GeneCreationError(GENEERROR error) {
+    public GeneCreationError(GeneErrorType error) {
         this.error = error;
         switch (error) {
             case INVALID_CHARACTER:

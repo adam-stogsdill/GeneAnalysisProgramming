@@ -1,0 +1,8 @@
+bin.main
+bin.main.ErrorManagement
+bin.main.Gene_Main
+bin.main.GenomeDatabaseInformation
+bin.main.GUI
+bin.main.Patient_Information
+bin.main.pattern_analysis
+bin.main.ThreadManagement

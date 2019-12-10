@@ -1,5 +1,5 @@
 package bin.main.Gene_Main;
-import bin.main.ErrorManagement.GENEERROR;
+import bin.main.ErrorManagement.GeneErrorType;
 import bin.main.ErrorManagement.GeneCreationError;
 
 import java.util.Random;
@@ -12,21 +12,30 @@ Thymine(T)
  */
 
 /**
- * This class is used for testing purposes so you can test certain systems inside of the actual program.
+ * Methods to test certain systems within the actual program.  Includes tools to check validity of gene sequences, and generate a random gene with a chosen number of pairs.
  */
 public class GeneCreation {
-
+    /**
+     * Tests whether a sequence is a proper gene sequence.  If the gene sequence given is not a valid sequence, the program will output an {@code INVALID_CHARACTER} error.
+     * @param sequence The sequence to be tested.
+     * @throws GeneCreationError Throws an {@code INVALID_CHARACTER} error if there is an invalid character in the sequence.
+     */
     public static void check_if_Possible(char[] sequence) throws GeneCreationError {
         for (int i = 0; i < sequence.length; i++) {
-            if (sequence[i] != 'A' && sequence[i] != 'G' && sequence[i] != 'C' && sequence[i] != 'T') {
+            if (sequence[i] != 'A' && sequence[i] != 'G' && sequence[i] != 'C' && sequence[i] != 'T' && sequence[i] != '_') {
                 System.out.println("This sequence is invalid at index " + i);
                 System.out.println(sequence[i] + " is not a valid character");
-                throw new GeneCreationError(GENEERROR.INVALID_CHARACTER);
+                throw new GeneCreationError(GeneErrorType.INVALID_CHARACTER);
             }
         }
     }
 
-    public static String randomGene(int size) {
+    /**
+     * Creates a random gene with a given number of pairs.
+     * @param size The number of pairs in the created gene.
+     * @return A string containing the randomly generated gene.
+     */
+    public static String random_gene(int size) {
         System.out.println("Generating a random gene of " + size + " pairs!");
         Random random = new Random();
         char[] result = new char[size];

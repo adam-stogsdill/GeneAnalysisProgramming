@@ -19,21 +19,12 @@ public class Patient {
         this.patient_data = patient_data;
     }
 
-    public void Mutations(){
-        for(Integer observing_chromosome: this.patient_data.getChromosome_information().keySet()){
-            System.out.println("Observing: " + observing_chromosome + " chromosome");
-            for(Gene nonmutated_gene: GeneDatabase.nonMutatedGenome.get(observing_chromosome)){
-                int start = nonmutated_gene.getCytogenicLocation().getStart() - 1;
-                int stop = nonmutated_gene.getCytogenicLocation().getStop() - 1;
-                char[] gene_info = Arrays.copyOfRange(this.patient_data.getChromosome_information().get(observing_chromosome).getGene_information(), start, stop);
-                if (!Arrays.equals(nonmutated_gene.getGene_information(), gene_info)){
-                    System.out.println("Mutation Located at (" + nonmutated_gene.getCytogenicLocation().toString() + ") which is the (" + nonmutated_gene.getName() + ") gene.");
-                }
-            }
-        }
-
+    public Patient(String name, Gene ... genes) {
+        this.patient_name = name;
+        this.patient_data = new ChromosomeData(genes);
     }
 
+<<<<<<< HEAD
     public boolean geneLookUpAvailable(Gene patientGene){
         ArrayList<Gene> lookup = GeneDatabase.nonMutatedGenome.get(patientGene.getCytogenicLocation().getChromosome());
         for(Gene g: lookup) {
@@ -64,6 +55,8 @@ public class Patient {
         }else
             throw new GenomeDatabaseError(GenomeError.INVALID_CHROMOSOME_NUMBER);
     }
+=======
+>>>>>>> 9f8d14814d2889d2701dd955aef8ebd6479d306f
 
     public String getPatient_name() {return this.patient_name;}
     public ChromosomeData getPatient_data(){return this.patient_data;}
